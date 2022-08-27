@@ -1,0 +1,95 @@
+/**
+* Variables
+*/
+
+:root {
+  --bg-color: 255, 255, 255;
+  --bg-general-color: 247, 247, 247;
+  --bg-accent-color: 60, 60, 60;
+
+  --font-color: 90, 90, 90;
+  --font-general-color: 255, 120, 120;
+  --font-accent-color: 75, 75, 75;
+
+  @media (prefers-color-scheme: dark) {
+    --bg-color: 39, 49, 65;
+    --bg-general-color: 55, 61, 78;
+    --bg-accent-color: 55, 61, 78;
+
+    --font-color: 209, 209, 209;
+    --font-general-color: 255, 138, 138;
+    --font-accent-color: 237, 237, 237;
+  }
+}
+
+/**
+* Basic
+*/
+
+* {
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  color: rgba(var(--font-color), 1);
+  background: rgba(var(--bg-color), 1);
+  font-size: 1em;
+  line-height: 1.8;
+  overflow-x: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  display: inline-block;
+  position: relative;
+  color: rgba(var(--font-general-color), 1);
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+  &:hover::after {
+    left: 0;
+    width: 100%;
+    background: rgba(var(--font-general-color), 1);
+  }
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background: rgba(var(--bg-general-color), 1);
+}
+
+img {
+  max-width: 80%;
+  filter: brightness(0.85) contrast(1.2);
+}
+
+pre,
+code {
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+::selection {
+  color: white;
+  background: rgba(var(--font-general-color), 1);
+}

@@ -1,0 +1,15 @@
+{{ define "content" }}
+<section id="content">
+  <article class="posts">
+    <h1>Tags</h1>
+    <ul>
+      {{ range .Data.Terms.Alphabetical }}
+      <li>
+        <a href="{{ .Page.RelPermalink }}" title="{{ .Page.Title }}">{{ .Page.Title }}</a>
+        <sup>{{ .Count }}</sup>
+      </li>
+      {{ end }}
+    </ul>
+  </article>
+</section>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ define "content" }}
+<section id="content">
+  {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.contentSections) (.Site.Params.listPaginate | default 100) }}
+  {{ if $paginator }}
+    {{- range $index, $element := $paginator.Pages -}}
+    {{- $thisYear := $element.Date.Format "2006" }}
+    {{- $lastElement := $index | add -1 | index $paginator.Pages }}
+
+    {{- if or (eq $index 0) ( ne ($lastElement.Date.Format "2006") $thisYear ) }}
+      <h2 class="archive-year">{{ $thisYear }}</h2>
+    {{- end }}
+
+    <article class="post-item">
+      <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+      <time datetime="{{ $element.Date.Format "2006-01-02T15:04:05Z0700" }}" class="date">{{ $element.Date.Format "01-02" }}</time>
+    </article>
+    {{- end }}
+  {{ end }}
+
+  {{ partial "pagination.html" . }}
+</section>
+{{ end }}

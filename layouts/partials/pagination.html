@@ -1,0 +1,16 @@
+{{ $pag := .Paginator }}
+
+{{ if gt $pag.TotalPages 1 }}
+<ul class="pagination">
+  {{ if $pag.HasPrev }}
+    <li class="page-item prev to-left">
+      <a href="{{ $pag.Prev.URL }}" aria-label="Previous" class="page-link">❮ Prev</a>
+    </li>
+  {{ end }}
+  {{ if $pag.HasNext }}
+    <li class="page-item next to-right">
+      <a href="{{ $pag.Next.URL }}" aria-label="Next" class="page-link">Next ❯</a>
+    </li>
+  {{ end }}
+</ul>
+{{ end }}

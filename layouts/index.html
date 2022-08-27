@@ -1,0 +1,12 @@
+{{ define "content" }}
+<section id="content">
+  {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.contentSections) }}
+  {{ range $paginator.Pages }}
+    <article class="post-item">
+      <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+    </article>
+  {{ end }}
+  {{ partial "pagination.html" . }}
+</section>
+{{ end }}

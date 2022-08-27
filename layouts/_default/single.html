@@ -1,0 +1,40 @@
+{{ define "content" }}
+<section id="content">
+  <article class="post">
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+    <div class="post-meta">
+      <ul class="tags">
+        {{ $s := slice }}
+        {{ range .Params.tags }}
+          {{ if not (in $.File.Dir (lower . | printf "%s/")) }}
+            {{ $s = $s | append . }}
+          {{ end }}
+        {{ end }}
+
+        {{ if gt (len $s) 0 }}
+          {{ range .Params.tags }}
+            <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+          {{ end }}
+        {{ end }}
+      </ul>
+
+      {{ with .Site.Params.postLicense }}
+        <div class="license">
+          <p>{{ . | markdownify }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+
+  {{ if ne .Type "section" }}
+    {{ partial "comments.html" . }}
+  {{ end }}
+</section>
+
+{{ if .Params.TOC }}
+  {{.TableOfContents}}
+{{ end }}
+
+{{ end }}
