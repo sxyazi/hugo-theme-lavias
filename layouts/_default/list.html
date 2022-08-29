@@ -1,11 +1,11 @@
 {{ define "content" }}
-<section id="content">
-  {{ range (.Paginator (.Site.Params.listPaginate | default 100)).Pages }}
-    <article class="post-item">
-      <a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
-      <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z0700" }}" class="date">{{ .PublishDate.Format "01-02" }}</time>
-    </article>
-  {{ end }}
-  {{ partial "pagination.html" . }}
-</section>
+	<section id="posts">
+      {{- range (.Paginator (.Site.Params.listPaginate | default 100)).Pages -}}
+				<article>
+					<a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+					<time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z0700" }}">{{ .PublishDate.Format "01-02" }}</time>
+				</article>
+      {{- end }}
+      {{ partial "pagination.html" . }}
+	</section>
 {{ end }}

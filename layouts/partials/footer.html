@@ -1,4 +1,0 @@
-<footer id="footer">
-  {{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
-  <script src="{{ $script.RelPermalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous" async></script>
-</footer>

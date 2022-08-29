@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#nprogress .spinner {
+    display: none !important;
+}
+
+.markdown-content img {
+    opacity: 1 !important;
+}
+
+.markdown-content :is(h1,h2,h3,h4,h5,h6) {
+    @apply relative text-slate-800;
+}
+
+.markdown-content :is(h2,h3,h4,h5,h6)::before {
+    content: '';
+    width: 1em;
+    @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600;
+}
+
+.markdown-content h2::before {
+    @apply border-pink-600;
+}

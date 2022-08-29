@@ -1,8 +1,8 @@
-name: "Lavias"
-license: "MIT"
-licenselink: "https://github.com/sxyazi/hugo-theme-lavias/blob/master/LICENSE"
-description: "A tale about Lavias."
-homepage: "https://github.com/sxyazi/hugo-theme-lavias"
+name: 'Lavias'
+license: 'MIT'
+licenselink: 'https://github.com/sxyazi/hugo-theme-lavias/blob/master/LICENSE'
+description: 'A tale about Lavias.'
+homepage: 'https://github.com/sxyazi/hugo-theme-lavias'
 tags:
   - blog
   - lavias
@@ -10,6 +10,6 @@ features:
   - blog
   - responsive
 author:
-  name: "sxyazi"
-  homepage: "https://github.com/sxyazi"
-min_version: "0.1"
+  name: 'sxyazi'
+  homepage: 'https://github.com/sxyazi'
+min_version: '0.1'

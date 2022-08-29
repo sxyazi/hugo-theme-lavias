@@ -1,20 +1,6 @@
-<header id="header">
-  <h1 class="title">
-    {{ if in site.Params.contentSections .Type }}
-      {{ .Title }}
-      <a href="/" class="go-home" title="Go Home">&#x21a9;&#xfe0e;</a>
-      <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="date">{{ .Date.Format "Monday, January 2, 2006" }}</time>
-    {{ else }}
-      {{ .Site.Title }}
-    {{ end }}
-  </h1>
-
-  {{ if not (in site.Params.contentSections .Type) }}
-    <nav class="navbar">
-      <a href="/">Home</a>
-      {{ range .Site.Menus.main }}
-        <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
-      {{ end }}
-    </nav>
-  {{ end }}
-</header>
+<nav id="nav">
+	<a href="/">Home</a>
+    {{- range .Site.Menus.main -}}
+			<a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+    {{- end }}
+</nav>
