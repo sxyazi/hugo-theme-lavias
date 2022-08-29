@@ -13,7 +13,7 @@ export function App() {
   const location = useLocation()
   const init = useRef({entry: location.pathname, last: location.pathname}).current
   const [source, setSource] = useState<Promise<Document>>(
-    () => Promise.resolve(parse(document.querySelector('noscript')?.innerHTML!)),
+    () => Promise.resolve(parse(document.querySelector('noscript')?.textContent!)),
   )
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function App() {
     } else if (location.pathname === init.entry) {
       init.last = init.entry
       return setSource(Promise
-        .resolve(parse(document.querySelector('noscript')?.innerHTML!))
+        .resolve(parse(document.querySelector('noscript')?.textContent!))
         .finally(() => NProgress.done()))
     } else {
       init.last = location.pathname
