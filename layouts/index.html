@@ -7,6 +7,6 @@
 					<details>{{ .Summary }}{{ if .Truncated }}…{{ end }}</details>
 				</article>
       {{- end }}
-      {{ partial "pagination.html" . }}
+      {{ partial "paginator.html" . }}
 	</section>
 {{ end }}

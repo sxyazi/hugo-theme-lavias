@@ -1,0 +1,7 @@
+{{ if .Paginator.HasNext }}
+	<a id="next-page" href="{{ .Paginator.Next.URL }}" aria-label="Next">Next Page</a>
+{{ end }}
+
+{{ if .Paginator.HasPrev }}
+	<a id="prev-page" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">Prev Page</a>
+{{ end }}

@@ -1,6 +1,5 @@
 import {Nav} from './Nav'
 import {css} from '@emotion/css'
-import {Footer} from './Footer'
 import {ComponentChildren} from 'preact'
 
 interface Props {
@@ -42,7 +41,6 @@ export const Layout = ({children, className}: Props) => {
       <section className={`w-11/12 max-w-3xl ${className ?? ''}`}>
         {children}
       </section>
-      <Footer/>
     </div>
   )
 }

@@ -7,6 +7,6 @@
 					<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "01-02" }}</time>
 				</article>
       {{- end }}
-      {{ partial "pagination.html" . }}
+      {{ partial "paginator.html" . }}
 	</section>
 {{ end }}
