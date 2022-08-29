@@ -3,6 +3,8 @@ export const parse = (s: string) => {
   return parser.parseFromString(s, 'text/html')
 }
 
+export const EMPTY_DOC = parse('')
+
 export const formatDate = (date: Date, format: string) => {
   return format.replace(/[Ymdw]/g, ($0) => {
     switch ($0) {

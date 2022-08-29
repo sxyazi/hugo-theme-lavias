@@ -13,7 +13,7 @@ export const usePosts = () => {
   const source = useSource()
 
   useEffect(() => {
-    setPosts(Array.from(source().querySelectorAll('#posts > article')).map((article) => {
+    setPosts(Array.from(source.querySelectorAll('#posts > article')).map((article) => {
       const a = article.querySelector(':scope > a')
       const time = article.querySelector(':scope > time')
 

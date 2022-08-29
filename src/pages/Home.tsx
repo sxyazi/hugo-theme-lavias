@@ -23,12 +23,10 @@ export const Home = () => {
 
   return (
     <Layout>
-      <section className="w-2/5">
-        {posts.length > 0 && <>
-					<h2 className="font-medium text-xl mb-4">My posts:</h2>
-          {posts.map((post) => <Line post={post}/>)}
-				</>}
-      </section>
+      {posts.length > 0 && <>
+				<h2 className="font-medium text-xl mb-4">My posts:</h2>
+        {posts.map((post) => <Line post={post}/>)}
+			</>}
     </Layout>
   )
 }

@@ -11,7 +11,7 @@ export const useNav = () => {
   const source = useSource()
 
   useEffect(() => {
-    setLinks(Array.from(source().querySelectorAll('#nav > a')).map((a) => {
+    setLinks(Array.from(source.querySelectorAll('#nav > a')).map((a) => {
       return {name: a.textContent!, link: a.getAttribute('href')!}
     }))
   }, [source])

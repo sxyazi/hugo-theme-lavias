@@ -13,7 +13,7 @@ export const useArchives = () => {
   const source = useSource()
 
   useEffect(() => {
-    setArchives(Array.from(source().querySelectorAll('#archives > article')).map((article) => {
+    setArchives(Array.from(source.querySelectorAll('#archives > article')).map((article) => {
       const a = article.querySelector(':scope > a')
       const date = new Date(article.querySelector(':scope > time')?.getAttribute('datetime')!)
 

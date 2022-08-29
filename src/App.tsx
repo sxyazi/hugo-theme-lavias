@@ -1,55 +1,39 @@
-import {Route, Routes, useLocation} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import {Home} from './pages/Home'
 import {Archives} from './pages/Archives'
 import {Tags} from './pages/Tags'
 import {Post} from './pages/Post'
-import {useEffect, useRef, useState} from 'preact/hooks'
-import AppContext from './contexts/AppContext'
-import {parse} from './utils'
-import {Suspense} from 'preact/compat'
-import NProgress from 'nprogress'
+import {useEffect} from 'preact/hooks'
+import {AppProvider} from './providers/AppProvider'
 
 export function App() {
-  const location = useLocation()
-  const init = useRef({entry: location.pathname, last: location.pathname}).current
-  const [source, setSource] = useState<Promise<Document>>(
-    () => Promise.resolve(parse(document.querySelector('noscript')?.textContent!)),
-  )
-
   useEffect(() => {
-    NProgress.start()
+    const onClick = (e: Event) => {
+      if (!(e.target instanceof HTMLAnchorElement)) {
+        return
+      }
 
-    if (location.pathname === init.last) {
-      NProgress.done()
-      return
-    } else if (location.pathname === init.entry) {
-      init.last = init.entry
-      return setSource(Promise
-        .resolve(parse(document.querySelector('noscript')?.textContent!))
-        .finally(() => NProgress.done()))
-    } else {
-      init.last = location.pathname
+      const url = new URL(e.target.href)
+      if (url.host !== location.host) {
+        e.target.target = '_blank'
+        e.target.rel = 'noopener'
+      }
     }
 
-    setSource(fetch(location.pathname)
-      .then(res => res.text())
-      .then((res) => parse(res).querySelector('noscript')?.innerHTML!)
-      .then((src) => parse(src))
-      .finally(() => NProgress.done()))
-
-  }, [location])
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [])
 
   return (
-    <Suspense fallback={<></>}>
-      <AppContext.Provider value={{source}}>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/tags" element={<Tags/>}/>
-          <Route path="/tags/:tag" element={<Tags/>}/>
-          <Route path="/archives" element={<Archives/>}/>
-          <Route path="*" element={<Post/>}/>
-        </Routes>
-      </AppContext.Provider>
-    </Suspense>
+    <AppProvider>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/page/:page" element={<Home/>}/>
+        <Route path="/tags" element={<Tags/>}/>
+        <Route path="/tags/:tag" element={<Tags/>}/>
+        <Route path="/archives" element={<Archives/>}/>
+        <Route path="*" element={<Post/>}/>
+      </Routes>
+    </AppProvider>
   )
 }

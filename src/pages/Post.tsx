@@ -42,13 +42,11 @@ export const Post = () => {
   }, [post, refContent.current])
 
   return (
-    <Layout>
-      <section class="w-2/5 text-slate-700 markdown-content">
-        {post && <>
-					<h1 class="">{post.title}</h1>
-					<div ref={refContent} dangerouslySetInnerHTML={{__html: post.content}}></div>
-				</>}
-      </section>
+    <Layout className="text-slate-700 markdown-content">
+      {post && <>
+				<h1>{post.title}</h1>
+				<div ref={refContent} dangerouslySetInnerHTML={{__html: post.content}}></div>
+			</>}
     </Layout>
   )
 }

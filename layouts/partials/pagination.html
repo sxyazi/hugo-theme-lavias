@@ -1,17 +1,7 @@
-{{/*TODO*/}}
-{{ $pag := .Paginator }}
+{{ if .Paginator.HasPrev }}
+	<a id="prev-page" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">Prev Page</a>
+{{ end }}
 
-{{ if gt $pag.TotalPages 1 }}
-	<ul class="pagination">
-      {{ if $pag.HasPrev }}
-				<li class="page-item prev to-left">
-					<a href="{{ $pag.Prev.URL }}" aria-label="Previous" class="page-link">❮ Prev</a>
-				</li>
-      {{ end }}
-      {{ if $pag.HasNext }}
-				<li class="page-item next to-right">
-					<a href="{{ $pag.Next.URL }}" aria-label="Next" class="page-link">Next ❯</a>
-				</li>
-      {{ end }}
-	</ul>
+{{ if .Paginator.HasNext }}
+	<a id="next-page" href="{{ .Paginator.Next.URL }}" aria-label="Next">Next Page</a>
 {{ end }}

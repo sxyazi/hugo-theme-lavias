@@ -12,7 +12,7 @@ export const useTags = () => {
   const source = useSource()
 
   useEffect(() => {
-    setLinks(Array.from(source().querySelectorAll('#tags > p')).map((p) => {
+    setLinks(Array.from(source.querySelectorAll('#tags > p')).map((p) => {
       const a = p.querySelector(':scope > a')
 
       return {

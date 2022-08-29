@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const Line = ({archive}: { archive: Archive }) => {
   return (
     <article class="mb-4">
-      <Link to={archive.link} className="text-pink-600 hover:underline hover:underline-offset-4">{archive.title}</Link>
+      <Link to={archive.link} className="text-pink-600 hover:underline underline-offset-4">{archive.title}</Link>
       <time class="ml-2 text-xs text-slate-500">{formatDate(archive.date, 'w, m d, Y')}</time>
     </article>
   )

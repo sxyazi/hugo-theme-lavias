@@ -13,14 +13,14 @@ export const usePost = () => {
   const source = useSource()
 
   useEffect(() => {
-    if (!source().querySelector('#post')) {
+    if (!source.querySelector('#post')) {
       return setPost(undefined)
     }
 
     setPost({
-      title: source().querySelector('#post > h1')?.textContent!,
-      content: source().querySelector('#post > details')?.innerHTML!,
-      tags: Array.from(source().querySelectorAll('#post > ul a')).map((a) => {
+      title: source.querySelector('#post > h1')?.textContent!,
+      content: source.querySelector('#post > details')?.innerHTML!,
+      tags: Array.from(source.querySelectorAll('#post > ul a')).map((a) => {
         return {name: a.textContent!, link: a.getAttribute('href')!}
       }),
     })

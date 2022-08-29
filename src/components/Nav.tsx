@@ -8,7 +8,7 @@ export const Nav = () => {
     <nav>
       {nav.map((item) =>
         <NavLink to={item.link}
-                 className="px-2 text-blue-600 hover:underline hover:underline-offset-4">
+                 className="px-2 text-blue-600 hover:underline underline-offset-4">
           {item.name}
         </NavLink>,
       )}
