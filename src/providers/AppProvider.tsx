@@ -31,6 +31,7 @@ export const AppProvider = ({children}: { children: ComponentChildren }) => {
       path.current.last = location.pathname
     }
 
+    setSource(EMPTY_DOC)
     fetch(location.pathname)
       .then(res => res.text())
       .then((res) => parse(res).querySelector('noscript')?.innerHTML!)

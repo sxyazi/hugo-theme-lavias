@@ -3,7 +3,6 @@ import {Link, useParams} from 'react-router-dom'
 import {Post, usePosts} from '../hooks'
 import {formatDate} from '../utils'
 import {Layout} from '../components/Layout'
-import {Paginator} from '../components/Paginator'
 
 const TagLine = ({tag}: { tag: Tag }) => {
   return (
@@ -39,8 +38,6 @@ export const Tags = () => {
 				<h2 class="font-medium text-xl mb-4">Tags:</h2>
         {tags.map((tag) => <TagLine tag={tag}/>)}
 			</>}
-
-      <Paginator/>
     </Layout>
   )
 }

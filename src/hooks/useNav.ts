@@ -7,13 +7,18 @@ export type Nav = {
 }
 
 export const useNav = () => {
-  const [links, setLinks] = useState<Nav[]>([])
   const source = useSource()
+  const [navs, setNavs] = useState<Nav[]>([])
 
   useEffect(() => {
-    setLinks(Array.from(source.querySelectorAll('#nav > a')).map((a) => {
+    const navs = Array.from(source.querySelectorAll('#nav > a')).map((a) => {
       return {name: a.textContent!, link: a.getAttribute('href')!}
-    }))
+    })
+
+    if (navs.length) {
+      setNavs(navs)
+    }
+
   }, [source])
-  return links
+  return navs
 }

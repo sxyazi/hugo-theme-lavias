@@ -1,6 +1,7 @@
 import {Nav} from './Nav'
 import {css} from '@emotion/css'
 import {ComponentChildren} from 'preact'
+import {Paginator} from './Paginator'
 
 interface Props {
   children: ComponentChildren
@@ -40,6 +41,7 @@ export const Layout = ({children, className}: Props) => {
       <Nav/>
       <section className={`w-11/12 max-w-3xl ${className ?? ''}`}>
         {children}
+        <Paginator/>
       </section>
     </div>
   )

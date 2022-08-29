@@ -2,7 +2,6 @@ import {Archive, useArchives} from '../hooks'
 import {Layout} from '../components/Layout'
 import {formatDate} from '../utils'
 import {Link} from 'react-router-dom'
-import {Paginator} from '../components/Paginator'
 
 const Line = ({archive}: { archive: Archive }) => {
   return (
@@ -35,8 +34,6 @@ export const Archives = () => {
           </>
         )
       })}
-
-      <Paginator/>
     </Layout>
   )
 }

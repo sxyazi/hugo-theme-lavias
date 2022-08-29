@@ -2,7 +2,6 @@ import {Layout} from '../components/Layout'
 import {formatDate} from '../utils'
 import {Post, usePosts} from '../hooks'
 import {useNavigate} from 'react-router-dom'
-import {Paginator} from '../components/Paginator'
 
 const Line = ({post}: { post: Post }) => {
   const navigate = useNavigate()
@@ -28,8 +27,6 @@ export const Home = () => {
 				<h2 className="font-medium text-xl mb-4">My posts:</h2>
         {posts.map((post) => <Line post={post}/>)}
 			</>}
-
-      <Paginator/>
     </Layout>
   )
 }

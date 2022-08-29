@@ -6,7 +6,7 @@ export const Paginator = () => {
   const {prev, next} = usePagination()
 
   return (
-    <div class="flex mt-4 pb-16">
+    <footer class="flex mt-4 pb-16">
       {next && <Link
 				to={next}
 				className="flex items-center text-blue-600 hover:underline underline-offset-4 mr-8">
@@ -18,6 +18,6 @@ export const Paginator = () => {
 				className="flex items-center text-blue-600 hover:underline underline-offset-4">
 				Prev <MdNavigateNext size="20"/>
 			</Link>}
-    </div>
+    </footer>
   )
 }
