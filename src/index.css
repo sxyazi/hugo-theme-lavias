@@ -2,24 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply dark:bg-slate-900;
+}
+
 #nprogress .spinner {
     display: none !important;
 }
 
-.markdown-content img {
-    opacity: 1 !important;
+.markdown-content {
+    @apply text-slate-700 dark:text-slate-300;
 }
 
 .markdown-content :is(h1,h2,h3,h4,h5,h6) {
-    @apply relative text-slate-800;
+    @apply relative text-slate-800 dark:text-slate-200;
 }
 
 .markdown-content :is(h2,h3,h4,h5,h6)::before {
     content: '';
     width: 1em;
-    @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600;
+    @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600 dark:border-slate-400;
 }
 
 .markdown-content h2::before {
-    @apply border-pink-600;
+    @apply border-pink-600 dark:border-pink-400;
 }

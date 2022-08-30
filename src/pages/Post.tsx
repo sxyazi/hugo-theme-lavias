@@ -42,7 +42,7 @@ export const Post = () => {
   }, [post, refContent.current])
 
   return (
-    <Layout className="text-slate-700 markdown-content">
+    <Layout className="markdown-content markdown-dark-supported">
       {post && <>
 				<h1>{post.title}</h1>
 				<div ref={refContent} dangerouslySetInnerHTML={{__html: post.content}}></div>

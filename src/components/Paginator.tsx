@@ -1,21 +1,17 @@
 import {usePagination} from '../hooks/usePagination'
-import {Link} from 'react-router-dom'
 import {MdNavigateBefore, MdNavigateNext} from 'react-icons/md'
+import {Link} from './Link'
 
 export const Paginator = () => {
   const {prev, next} = usePagination()
 
   return (
     <footer class="flex mt-4 pb-16">
-      {next && <Link
-				to={next}
-				className="flex items-center text-blue-600 hover:underline underline-offset-4 mr-8">
+      {next && <Link to={next} className="flex items-center mr-8">
 				<MdNavigateBefore size="20"/> Next
 			</Link>}
 
-      {prev && <Link
-				to={prev}
-				className="flex items-center text-blue-600 hover:underline underline-offset-4">
+      {prev && <Link to={prev} className="flex items-center">
 				Prev <MdNavigateNext size="20"/>
 			</Link>}
     </footer>

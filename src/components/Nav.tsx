@@ -1,5 +1,5 @@
 import {useNav} from '../hooks'
-import {NavLink} from 'react-router-dom'
+import {Link} from './Link'
 
 export const Nav = () => {
   const nav = useNav()
@@ -7,10 +7,9 @@ export const Nav = () => {
   return (
     <nav>
       {nav.map((item) =>
-        <NavLink to={item.link}
-                 className="px-2 text-blue-600 hover:underline underline-offset-4">
+        <Link nav={true} to={item.link} className="px-2">
           {item.name}
-        </NavLink>,
+        </Link>,
       )}
     </nav>
   )
