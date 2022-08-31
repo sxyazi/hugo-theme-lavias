@@ -30,5 +30,6 @@ import 'prismjs/components/prism-cmake.min'
 import 'prismjs/components/prism-docker.min'
 import 'prismjs/components/prism-sql.min'
 import 'prismjs/components/prism-shell-session.min'
+import 'prismjs/components/prism-ini.min'
 
 export {highlightAllUnder}

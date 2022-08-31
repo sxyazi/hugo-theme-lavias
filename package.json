@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "node src/cmd.js dev",
-    "build": "node src/cmd.js build"
+    "dev": "node cmd.js dev",
+    "build": "node cmd.js build"
   },
   "dependencies": {
     "@chisato/markdown-css": "^1.3.0",
