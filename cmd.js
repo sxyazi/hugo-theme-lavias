@@ -21,7 +21,7 @@ const replaceBase = (dev = false) => {
 
 	const origin = htm
 	if (dev) {
-		htm = htm.replaceAll(reLink, `<!-- Links -->\n<!-- /Links -->`)
+		htm = htm.replaceAll(reLink, `<!-- Links -->\n<style>body>main{display:none}</style>\n<!-- /Links -->`)
 		htm = htm.replaceAll(reScript, `<!-- Scripts -->\n<script type="module" src="/src/main.tsx"></script>\n<!-- /Scripts -->`)
 	} else {
 		const {scripts, links} = extract()

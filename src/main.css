@@ -6,8 +6,16 @@ body {
     @apply dark:bg-slate-900;
 }
 
-main {
+body > main {
     @apply hidden;
+}
+
+#nprogress .bar {
+    background-color: #f472b6 !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #f472b6, 0 0 5px #f472b6 !important;
 }
 
 #nprogress .spinner {
