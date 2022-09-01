@@ -1,8 +1,9 @@
 {
   "name": "hugo-theme-lavias",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "type": "module",
+  "packageManager": "pnpm@7.9.5",
   "scripts": {
     "dev": "node cmd.js dev",
     "build": "node cmd.js build"
