@@ -8,7 +8,7 @@ export const Post = () => {
 
   useEffect(() => {
     const highlight = (content: HTMLDivElement) => {
-      const langAlias: { [key: string]: string } = {'pgsql': 'sql', 'shell': 'bash'}
+      const langAlias: { [key: string]: string } = {'pgsql': 'sql', 'shell': 'bash', 'golang': 'go'}
 
       for (const element of content.querySelectorAll('pre>code')) {
         if (!element.className.startsWith('language-')) {
