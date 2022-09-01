@@ -32,8 +32,9 @@ jobs:
         run: |
           pnpm run build
           if ! git diff --quiet; then
-            git config --global user.email "<>"
-            git config --global user.name "CI Build"
-            git commit -am "🗜️ build [skip ci]"
+            git config --global user.email "noreply@github.com"
+            git config --global user.name "CI"
+            git add -A
+            git commit -m "🗜️ build [skip ci]"
             git push
           fi
