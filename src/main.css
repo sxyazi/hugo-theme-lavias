@@ -6,6 +6,10 @@ body {
     @apply dark:bg-slate-900;
 }
 
+main {
+    @apply hidden;
+}
+
 #nprogress .spinner {
     display: none !important;
 }

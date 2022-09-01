@@ -40,7 +40,7 @@ switch (process.argv[2]) {
 		const restore = replaceBase(true)
 		child_process.execSync('rm -rf dist')
 		try {
-			child_process.execSync('hugo -d themes/lavias/dist', {
+			child_process.execSync('hugo -d themes/hugo-theme-lavias/dist --config config.yaml,themes/hugo-theme-lavias/hugo.dev.yaml', {
 				cwd: resolve(base, '../../'),
 			})
 		} finally {

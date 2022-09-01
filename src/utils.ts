@@ -1,9 +1,9 @@
+export const EMPTY_DIV = document.createElement('div')
+
 export const parse = (s: string) => {
   const parser = new DOMParser()
   return parser.parseFromString(s, 'text/html')
 }
-
-export const EMPTY_DOC = parse('')
 
 export const formatDate = (date: Date, format: string) => {
   return format.replace(/[Ymdw]/g, ($0) => {

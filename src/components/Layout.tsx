@@ -12,7 +12,7 @@ const layout = css`
   display: grid;
   grid-template-areas:
     'nav'
-    'main'
+    'content'
     'foot';
   grid-template-rows: 50px 1fr 30px;
   grid-template-columns: 1fr;
@@ -25,7 +25,7 @@ const layout = css`
   }
 
   & > section {
-    grid-area: main;
+    grid-area: content;
     justify-self: center;
   }
 

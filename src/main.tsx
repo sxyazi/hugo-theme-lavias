@@ -9,5 +9,5 @@ render(
   <BrowserRouter>
     <App/>
   </BrowserRouter>,
-  document.getElementById('app') as HTMLElement,
+  document.querySelector('app')!,
 )
