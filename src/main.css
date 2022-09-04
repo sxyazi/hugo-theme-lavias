@@ -36,6 +36,10 @@ body > main {
     @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600 dark:border-slate-400;
 }
 
+.markdown-content h1:hover + time {
+    opacity: 1;
+}
+
 .markdown-content h2::before {
     @apply border-pink-600 dark:border-pink-400;
 }
