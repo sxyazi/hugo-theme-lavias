@@ -6,7 +6,7 @@ import NProgress from 'nprogress'
 
 export const AppContext = createContext<{
 	source: HTMLElement
-	path: RefObject<{ entry: string, last: string }>
+	path: RefObject<string>
 }>({
 	source: EMPTY_DIV,
 	path: createRef(),
@@ -14,30 +14,44 @@ export const AppContext = createContext<{
 
 export const AppProvider = ({children}: { children: ComponentChildren }) => {
 	const location = useLocation()
-	const path = useRef({entry: location.pathname, last: location.pathname})
+	const path = useRef(location.pathname)
 	const [source, setSource] = useState<HTMLElement>(document.querySelector('main')!)
 
 	useEffect(() => {
 		NProgress.start()
-		if (location.pathname === path.current.last) {
-			NProgress.done()
-			return
-		} else if (location.pathname === path.current.entry) {
-			path.current.last = path.current.entry
-			setSource(document.querySelector('main')!)
+		if (location.pathname === path.current) {
+			// @ts-ignore
+			fetch(location.pathname, {headers: {'x-swr': '1'}, priority: 'high'}).catch(console.error)
 			NProgress.done()
 			return
 		} else {
-			path.current.last = location.pathname
+			setSource(EMPTY_DIV)
+			path.current = location.pathname
 		}
 
-		setSource(EMPTY_DIV)
-		// @ts-ignore
-		fetch(location.pathname, {priority: 'high'})
-			.then(res => res.text())
-			.then((res) => parse(res).querySelector('main')!)
+		fetch(location.pathname, {
+			headers: {'x-swr': '1'},
+			// @ts-ignore
+			priority: 'high',
+		})
+			.then(resp => resp.text())
+			.then((resp) => parse(resp).querySelector('main')!)
 			.then(setSource)
 			.finally(() => NProgress.done())
+
+	}, [location])
+
+	useEffect(() => {
+		const onMessage = ({data}: MessageEvent) => {
+			if (data.type !== 'SWR') return
+			if (data.path === location.pathname) {
+				const resp = new TextDecoder().decode(data.buf)
+				setSource(parse(resp).querySelector('main')!)
+			}
+		}
+
+		navigator.serviceWorker?.addEventListener('message', onMessage)
+		return () => navigator.serviceWorker?.removeEventListener('message', onMessage)
 
 	}, [location])
 
