@@ -7,9 +7,11 @@
 	<meta name="format-detection" content="telephone=no"/>
 	<meta name="description"
 				content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{if .Description}}{{.Description}}{{else}}{{.Summary}}{{end}}{{end}}"/>
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
 
-    {{ template "_internal/opengraph.html" . }}
-    {{ template "_internal/twitter_cards.html" . }}
+	{{ template "_internal/opengraph.html" . }}
+	{{ template "_internal/twitter_cards.html" . }}
 
 	<title data-site="{{ .Site.Title }}">
       {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}
