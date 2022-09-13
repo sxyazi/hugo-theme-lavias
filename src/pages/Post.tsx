@@ -1,8 +1,7 @@
-import {usePost} from '../hooks/usePost'
+import {usePost, useTitle} from '../hooks'
 import {Layout} from '../components/Layout'
 import {useEffect, useRef} from 'preact/hooks'
 import {formatDate} from '../utils'
-import {useTitle} from '../hooks'
 
 export const Post = () => {
 	const post = usePost()
@@ -13,23 +12,23 @@ export const Post = () => {
 		const highlight = (content: HTMLDivElement) => {
 			const langAlias: { [key: string]: string } = {'pgsql': 'sql', 'shell': 'bash', 'golang': 'go'}
 
-			for (const element of content.querySelectorAll('pre>code')) {
-				if (!element.className.startsWith('language-')) {
-					element.className = 'language-plaintext'
+			for (const el of content.querySelectorAll('pre>code')) {
+				if (!el.className.startsWith('language-')) {
+					el.className = 'language-plaintext'
 					continue
 				}
 
 				// Line highlighting
 				const regex = /(lang(?:uage)?-.+){([\d,-]+)}/
-				const lines = regex.exec(element.className)
+				const lines = regex.exec(el.className)
 				if (lines) {
-					(element.parentNode as HTMLPreElement).setAttribute('data-line', lines[2])
-					element.className = element.className.replace(regex, '$1')
+					(el.parentNode as HTMLPreElement).setAttribute('data-line', lines[2])
+					el.className = el.className.replace(regex, '$1')
 				}
 
-				const lang = element.className.substring(9)
+				const lang = el.className.substring(9)
 				if (lang in langAlias) {
-					element.className = `language-${langAlias[lang]}`
+					el.className = `language-${langAlias[lang]}`
 				}
 			}
 

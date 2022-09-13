@@ -4,7 +4,7 @@
 				<article>
 					<a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
 					<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-					<details>{{ .Summary }}{{ if .Truncated }}…{{ end }}</details>
+					<p>{{ .Summary }}{{ if .Truncated }}…{{ end }}</p>
 				</article>
       {{- end }}
       {{ partial "paginator.html" . }}

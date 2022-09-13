@@ -1,6 +1,5 @@
-import {Tag, useTags} from '../hooks/useTags'
+import {Post, Tag, usePosts, useTags, useTitle} from '../hooks'
 import {useParams} from 'react-router-dom'
-import {Post, usePosts, useTitle} from '../hooks'
 import {formatDate} from '../utils'
 import {Layout} from '../components/Layout'
 import {Link} from '../components/Link'

@@ -15,7 +15,7 @@ export const usePosts = () => {
 				title: a?.textContent!,
 				link: a?.getAttribute('href')!,
 				date: new Date(time?.getAttribute('datetime')!),
-				summary: article.querySelector(':scope > details')?.textContent ?? undefined,
+				summary: article.querySelector(':scope > p')?.textContent ?? undefined,
 			}
 		}))
 	}, [source])

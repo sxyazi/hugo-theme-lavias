@@ -1,4 +1,4 @@
-import {usePagination} from '../hooks/usePagination'
+import {usePagination} from '../hooks'
 import {MdNavigateBefore, MdNavigateNext} from 'react-icons/md'
 import {Link} from './Link'
 import {useEffect} from 'preact/hooks'
