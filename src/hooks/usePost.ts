@@ -5,7 +5,7 @@ import {useSource} from './useSource'
 export type Post = {
 	title: string
 	link: string
-	date: Date
+	date?: Date
 	content?: string
 	summary?: string
 	tags?: Tag[]
@@ -20,10 +20,12 @@ export const usePost = () => {
 			return setPost(undefined)
 		}
 
+		const time = source.querySelector('#post > time')
+
 		setPost({
 			title: source.querySelector('#post > h1')?.textContent!,
 			link: location.href,
-			date: new Date(source.querySelector('#post > time')?.getAttribute('datetime')!),
+			date: time ? new Date(time.getAttribute('datetime')!) : undefined,
 			content: source.querySelector('#post > div')?.innerHTML!,
 			tags: Array.from(source.querySelectorAll('#post > ul a')).map((a) => {
 				return {name: a.textContent!, link: a.getAttribute('href')!}

@@ -40,7 +40,7 @@ const Line = ({post}: { post: Post }) => {
 			onClick={() => navigate(post.link)}
 		>
 			<span class="font-medium text-lg text-pink-600 dark:text-pink-400">{post.title}</span>
-			<time class="ml-2 text-sm text-slate-400 dark:text-slate-400">{formatDate(post.date, 'w, m d, Y')}</time>
+			<time class="ml-2 text-sm text-slate-400 dark:text-slate-400">{formatDate(post.date!, 'w, m d, Y')}</time>
 			<summary class="list-none mt-3 text-slate-700 dark:text-slate-300">{post.summary}</summary>
 		</article>
 	)

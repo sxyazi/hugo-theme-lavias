@@ -3,6 +3,9 @@ export type {}
 declare const self: ServiceWorkerGlobalScope
 const SW_VERSION = '%SW_VERSION%'
 
+// @ts-ignore
+const isDev = () => SW_VERSION === 'dev'
+
 self.addEventListener('install', (event: ExtendableEvent) => {
 	event.waitUntil(self.skipWaiting())
 })
@@ -19,6 +22,10 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 const hostname = new URL(self.registration.scope).hostname
 
 self.addEventListener('fetch', (event: FetchEvent) => {
+	if (isDev()) {
+		return
+	}
+
 	const {request} = event
 	const url = new URL(event.request.url)
 	if (url.hostname !== hostname) {

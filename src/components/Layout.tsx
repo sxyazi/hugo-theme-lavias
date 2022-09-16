@@ -4,11 +4,11 @@ import {ComponentChildren} from 'preact'
 import {Paginator} from './Paginator'
 
 interface Props {
-  children: ComponentChildren
-  className?: string
+	children: ComponentChildren
+	className?: string
 }
 
-const layout = css`
+const styles = css`
   display: grid;
   grid-template-areas:
     'nav'
@@ -36,13 +36,13 @@ const layout = css`
 `
 
 export const Layout = ({children, className}: Props) => {
-  return (
-    <div class={layout}>
-      <Nav/>
-      <section className={`w-11/12 max-w-3xl ${className ?? ''}`}>
-        {children}
-        <Paginator/>
-      </section>
-    </div>
-  )
+	return (
+		<div class={styles}>
+			<Nav/>
+			<section className={`w-11/12 max-w-3xl ${className ?? ''}`}>
+				{children}
+				<Paginator/>
+			</section>
+		</div>
+	)
 }

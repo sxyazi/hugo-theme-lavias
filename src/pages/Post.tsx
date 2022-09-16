@@ -2,6 +2,8 @@ import {usePost, useTitle} from '../hooks'
 import {Layout} from '../components/Layout'
 import {useEffect, useRef} from 'preact/hooks'
 import {formatDate} from '../utils'
+import {useContext} from 'preact/compat'
+import {AppContext} from '../providers/AppProvider'
 
 export const Post = () => {
 	const post = usePost()
@@ -43,13 +45,15 @@ export const Post = () => {
 
 	}, [post, refContent.current])
 
+	const {dark} = useContext(AppContext)
 	return (
-		<Layout className="relative markdown-content markdown-dark-supported">
+		<Layout className={`relative markdown-content ${dark ? 'markdown-content-dark' : ''}`}>
 			{post && <>
 				<h1>{post.title}</h1>
-				<time className="absolute top-0 text-xs text-slate-500 dark:text-slate-400 transition-opacity opacity-0">
+				{post.date ? <time
+					className="absolute top-0 text-xs text-slate-500 dark:text-slate-400 transition-opacity opacity-0 pointer-events-none">
 					{formatDate(post.date, 'w, m d, Y')}
-				</time>
+				</time> : <></>}
 				<div ref={refContent} dangerouslySetInnerHTML={{__html: post.content!}}></div>
 			</>}
 		</Layout>
