@@ -13,6 +13,6 @@ render(
 	document.querySelector('app')!,
 )
 
-registerSW().catch(console.error)
+registerSW('sw.js').catch(console.error)
 
 setTimeout(() => import('./prism').catch(console.info))

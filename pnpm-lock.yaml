@@ -18,7 +18,7 @@ specifiers:
   tailwindcss: ^3.1.8
   typescript: ^4.8.3
   vite: ^3.1.1
-  vite-plugin-native-sw: ^1.0.1
+  vite-plugin-native-sw: ^1.1.0
 
 dependencies:
   '@chisato/markdown-css': 1.5.1
@@ -40,7 +40,7 @@ devDependencies:
   tailwindcss: 3.1.8_postcss@8.4.16
   typescript: 4.8.3
   vite: 3.1.1
-  vite-plugin-native-sw: 1.0.1
+  vite-plugin-native-sw: 1.1.0
 
 packages:
 
@@ -605,7 +605,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001402
-      electron-to-chromium: 1.4.253
+      electron-to-chromium: 1.4.254
       node-releases: 2.0.6
       update-browserslist-db: 1.0.9_browserslist@4.21.4
     dev: true
@@ -719,8 +719,8 @@ packages:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
     dev: true
 
-  /electron-to-chromium/1.4.253:
-    resolution: {integrity: sha512-1pezJ2E1UyBTGbA7fUlHdPSXQw1k+82VhTFLG5G0AUqLGvsZqFzleOblceqegZzxYX4kC7hGEEdzIQI9RZ1Cuw==}
+  /electron-to-chromium/1.4.254:
+    resolution: {integrity: sha512-Sh/7YsHqQYkA6ZHuHMy24e6TE4eX6KZVsZb9E/DvU1nQRIrH4BflO/4k+83tfdYvDl+MObvlqHPRICzEdC9c6Q==}
     dev: true
 
   /error-ex/1.3.2:
@@ -1457,8 +1457,8 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /vite-plugin-native-sw/1.0.1:
-    resolution: {integrity: sha512-Bczpgzz0ZLupDKSnx+J8J4xT43fLG0WvOlCFGdTqrKaAuyXgPIwYqJgxUMioFwohDjudcxY5eah+uzKG41a2lg==}
+  /vite-plugin-native-sw/1.1.0:
+    resolution: {integrity: sha512-nTvq82+GLfoZ5hyZrrnaEEupYwayS3BkPvvtmeeIs920ODTyHcGDq1rKOsQPpwUBgZvX0hQFWnIBV2yAfQ1xTQ==}
     dev: true
 
   /vite/3.1.1:

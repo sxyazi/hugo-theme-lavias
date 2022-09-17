@@ -7,7 +7,10 @@ export default defineConfig({
 	plugins: [
 		preact(),
 		nativeSW({
-			src: resolve(__dirname, 'src/service-worker.ts'),
+			entries: [{
+				src: resolve(__dirname, 'src/service-worker.ts'),
+				dist: 'sw.js',
+			}],
 		}),
 	],
 	esbuild: {

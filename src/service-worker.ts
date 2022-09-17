@@ -29,7 +29,7 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 	const {request} = event
 	const url = new URL(event.request.url)
 	if (url.hostname !== hostname) {
-		return event.respondWith(fetch(request))
+		return
 	}
 
 	const swr = request.headers.get('x-swr')
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 			if (swr && cached && resp.status < 400)
 				resp.clone().arrayBuffer().then(async (buf: ArrayBuffer) => {
 					const client = await self.clients.get(event.clientId)
-					client?.postMessage({type: 'SWR', path: url.pathname, buf}, [buf])
+					client?.postMessage({type: 'SWR', version: SW_VERSION, path: url.pathname, buf}, [buf])
 				})
 
 			return resp.clone()

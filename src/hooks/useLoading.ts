@@ -2,6 +2,7 @@ import {useLocation} from 'react-router-dom'
 import {useEffect, useRef, useState} from 'preact/hooks'
 import NProgress from 'nprogress'
 import {EMPTY_DIV, parse} from '../utils'
+import {packedSW} from 'virtual:sw-plugin'
 
 export const useLoading = () => {
 	const location = useLocation()
@@ -35,6 +36,7 @@ export const useLoading = () => {
 	useEffect(() => {
 		const onMessage = ({data}: MessageEvent) => {
 			if (data.type !== 'SWR') return
+			if (!packedSW().find(({version}) => version === data.version)) return
 			if (data.path === location.pathname) {
 				const resp = new TextDecoder().decode(data.buf)
 				setSource(parse(resp).querySelector('main')!)
