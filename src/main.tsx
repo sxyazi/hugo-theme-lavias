@@ -15,4 +15,8 @@ render(
 
 registerSW('sw.js').catch(console.error)
 
-setTimeout(() => import('./prism').catch(console.info))
+setTimeout(() => {
+	import('./prism').catch(console.info)
+	import('katex/dist/katex.min.css').catch(console.info)
+	import('katex/contrib/auto-render').catch(console.info)
+})

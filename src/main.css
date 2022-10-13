@@ -26,6 +26,7 @@ body > main {
     @apply text-slate-700 dark:text-slate-300;
 }
 
+/* Markdown headers */
 .markdown-content :is(h1,h2,h3,h4,h5,h6) {
     @apply relative text-slate-800 dark:text-slate-200;
 }
@@ -42,4 +43,23 @@ body > main {
 
 .markdown-content h2::before {
     @apply border-pink-600 dark:border-pink-400;
+}
+
+/* Markdown image */
+.markdown-content img[align=left] {
+    @apply float-left mr-4;
+}
+
+.markdown-content img[align=right] {
+    @apply float-right ml-4;
+}
+
+.markdown-content img[align=center] {
+    @apply block mx-auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    .markdown-content img {
+        filter: url(#invertLightness);
+    }
 }

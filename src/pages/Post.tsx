@@ -4,6 +4,7 @@ import {useEffect, useRef} from 'preact/hooks'
 import {formatDate} from '../utils'
 import {useContext} from 'preact/compat'
 import {AppContext} from '../providers/AppProvider'
+import {InvertLightness} from '../components/InvertLightness'
 
 export const Post = () => {
 	const post = usePost()
@@ -45,9 +46,29 @@ export const Post = () => {
 
 	}, [post, refContent.current])
 
+	useEffect(() => {
+		const renderMath = async (content: HTMLDivElement) => {
+			import('katex/dist/katex.min.css')
+
+			return (await import('katex/contrib/auto-render')).default(content, {
+				delimiters: [
+					{left: '$$', right: '$$', display: true},
+					{left: '$', right: '$', display: false},
+				],
+				throwOnError: false,
+			})
+		}
+
+		if (post && refContent.current) {
+			renderMath(refContent.current).catch(console.error)
+		}
+
+	}, [post, refContent.current])
+
 	const {dark} = useContext(AppContext)
 	return (
 		<Layout className={`relative markdown-content ${dark ? 'markdown-content-dark' : ''}`}>
+			<InvertLightness/>
 			{post && <>
 				<h1>{post.title}</h1>
 				{post.date ? <time
