@@ -62,10 +62,8 @@ body > main {
     @apply my-2 text-xs text-center text-slate-400 dark:text-slate-500;
 }
 
-@media (prefers-color-scheme: dark) {
-    .markdown-content img {
-        filter: url(#invertLightness);
-    }
+:root.dark .markdown-content img {
+    filter: url(#invertLightness);
 }
 
 /* KaTeX */
