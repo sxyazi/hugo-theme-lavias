@@ -58,6 +58,10 @@ body > main {
     @apply block mx-auto;
 }
 
+.markdown-content figcaption {
+    @apply my-2 text-xs text-center text-slate-400 dark:text-slate-500;
+}
+
 @media (prefers-color-scheme: dark) {
     .markdown-content img {
         filter: url(#invertLightness);
