@@ -63,3 +63,8 @@ body > main {
         filter: url(#invertLightness);
     }
 }
+
+/* KaTeX */
+.katex-display .katex-html {
+    overflow: auto hidden;
+}
