@@ -51,6 +51,7 @@ export const Post = () => {
 			import('katex/dist/katex.min.css')
 
 			return (await import('katex/contrib/auto-render')).default(content, {
+				output: 'html',
 				delimiters: [
 					{left: '$$', right: '$$', display: true},
 					{left: '$', right: '$', display: false},
