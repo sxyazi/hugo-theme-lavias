@@ -16,10 +16,12 @@ export const useNav = () => {
 		const navs = Array.from(source.querySelectorAll('#nav > a')).map((a) => {
 			return {name: a.textContent!, link: a.getAttribute('href')!}
 		})
+		if (!navs.length) return
 
-		if (navs.length) {
-			prevNavs = navs
-			setNavs(navs)
+		// We assume that the nav is always the same,
+		// to avoid unnecessary re-renders and re-preloads.
+		if (!prevNavs.length) {
+			setNavs(prevNavs = navs)
 		}
 
 	}, [source])
