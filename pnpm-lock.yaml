@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@chisato/markdown-css': ^1.5.1
+  '@chisato/markdown-css': ^1.5.2
   '@emotion/css': ^11.10.5
   '@preact/preset-vite': ^2.4.0
   '@types/katex': ^0.14.0
@@ -23,7 +23,7 @@ specifiers:
   vite-plugin-native-sw: ^1.2.0
 
 dependencies:
-  '@chisato/markdown-css': 1.5.1
+  '@chisato/markdown-css': 1.5.2
   '@emotion/css': 11.10.5
   katex: 0.16.3
   nprogress: 0.2.0
@@ -291,8 +291,8 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@chisato/markdown-css/1.5.1:
-    resolution: {integrity: sha512-a80iEJZjqiWzohBSePnwyQh0/nFY6eFPPjHbrqmzEk33jPmB7qc2NbwFct8TiyOMt8tgxul3B0KaNQ/A8QF+jg==}
+  /@chisato/markdown-css/1.5.2:
+    resolution: {integrity: sha512-Ig1pSWlw0TMiBhATt7hBMKOyKwhU0efUrFqLLp9nXvo7a9jtfBEx8D0391+Z2aldu+USzY0E/pmGw6IgY4joPQ==}
     dev: false
 
   /@emotion/babel-plugin/11.10.5:

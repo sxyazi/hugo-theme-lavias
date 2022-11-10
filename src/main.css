@@ -46,32 +46,12 @@ body > main {
 }
 
 /* Markdown image */
-.markdown-content pre + img {
-    margin-top: 1rem;
-}
-
-.markdown-content img[align=left] {
-    @apply float-left mr-4;
-}
-
-.markdown-content img[align=right] {
-    @apply float-right ml-4;
-}
-
-.markdown-content img[align=center] {
-    @apply block mx-auto;
-}
-
 :root.dark .markdown-content img.inv {
     filter: url(#invertLightness);
 }
 
 :root.dark .markdown-content img.bri {
     filter: brightness(0.8);
-}
-
-.markdown-content figcaption {
-    @apply my-2 text-xs text-center text-slate-400 dark:text-slate-500;
 }
 
 /* KaTeX */
