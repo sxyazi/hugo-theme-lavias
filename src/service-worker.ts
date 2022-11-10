@@ -7,20 +7,23 @@ const SW_VERSION = '%SW_VERSION%'
 // @ts-ignore
 const isDev = () => SW_VERSION === 'dev'
 const cachedOnlyOnce = (path: string) => {
-	path = path.split('/').pop() ?? ''  // filename
+	const file = path.split('/').pop() ?? ''
 
-	// manifest.json
-	if (path === 'manifest.json') {
+	// favicon.ico / manifest.json
+	if (['favicon.ico', 'manifest.json'].includes(file)) {
 		return true
 	}
-	// favicon*.png
-	if (path.startsWith('favicon') && path.endsWith('.png')) {
-		return true
-	}
+
 	// [name].[hash].[js,json,css]
-	if (/.+\.[a-z0-9]{8}\.(js|json|css)$/.test(path)) {
+	if (/.+\.[a-z0-9]{8}\.(js|json|css)$/.test(file)) {
 		return true
 	}
+
+	// *-[w]x[h].png at root path
+	if (/^\/?[^\/]+-\d+x\d+\.png$/.test(path)) {
+		return true
+	}
+
 	return false
 }
 
