@@ -19,7 +19,7 @@ export const Nav = () => {
 	const {dark, toggle} = useContext(AppContext)
 
 	useEffect(() => {
-		nav.map(({link}) => preload(link))
+		nav.map(({link}) => link.replace(/\//g, '') && preload(link))
 	}, [nav])
 
 	return (

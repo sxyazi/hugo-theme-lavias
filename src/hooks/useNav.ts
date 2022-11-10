@@ -6,9 +6,11 @@ export type Nav = {
 	link: string
 }
 
+let prevNavs: Nav[] = []
+
 export const useNav = () => {
 	const source = useSource()
-	const [navs, setNavs] = useState<Nav[]>([])
+	const [navs, setNavs] = useState<Nav[]>(prevNavs)
 
 	useEffect(() => {
 		const navs = Array.from(source.querySelectorAll('#nav > a')).map((a) => {
@@ -16,6 +18,7 @@ export const useNav = () => {
 		})
 
 		if (navs.length) {
+			prevNavs = navs
 			setNavs(navs)
 		}
 
