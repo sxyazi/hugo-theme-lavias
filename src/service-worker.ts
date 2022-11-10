@@ -1,10 +1,28 @@
 /// <reference lib="webworker" />
+
 export type {}
 declare const self: ServiceWorkerGlobalScope
 const SW_VERSION = '%SW_VERSION%'
 
 // @ts-ignore
 const isDev = () => SW_VERSION === 'dev'
+const cachedOnlyOnce = (path: string) => {
+	path = path.split('/').pop() ?? ''  // filename
+
+	// manifest.json
+	if (path === 'manifest.json') {
+		return true
+	}
+	// favicon*.png
+	if (path.startsWith('favicon') && path.endsWith('.png')) {
+		return true
+	}
+	// [name].[hash].[js,json,css]
+	if (/.+\.[a-z0-9]{8}\.(js|json|css)$/.test(path)) {
+		return true
+	}
+	return false
+}
 
 self.addEventListener('install', (event: ExtendableEvent) => {
 	event.waitUntil(self.skipWaiting())
@@ -35,6 +53,10 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 	const swr = request.headers.get('x-swr')
 	return event.respondWith(async function () {
 		const cached = await caches.match(request)
+		if (cached && cachedOnlyOnce(url.pathname)) {
+			return cached
+		}
+
 		const fresh = fetch(request).then(resp => {
 			if (resp.status < 400)
 				caches.open(SW_VERSION).then(cache => cache.put(request, resp.clone()))
@@ -46,7 +68,6 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 
 			return resp.clone()
 		})
-
 		return cached ?? fresh
 	}())
 })
