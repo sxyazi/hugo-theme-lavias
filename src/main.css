@@ -46,6 +46,10 @@ body > main {
 }
 
 /* Markdown image */
+.markdown-content pre + img {
+    margin-top: 1rem;
+}
+
 .markdown-content img[align=left] {
     @apply float-left mr-4;
 }
@@ -58,8 +62,12 @@ body > main {
     @apply block mx-auto;
 }
 
-:root.dark .markdown-content img {
+:root.dark .markdown-content img.inv {
     filter: url(#invertLightness);
+}
+
+:root.dark .markdown-content img.bri {
+    filter: brightness(0.8);
 }
 
 .markdown-content figcaption {
