@@ -26,6 +26,16 @@ const cachedOnlyOnce = (path: string) => {
 
 	return false
 }
+const buffEqual = (a: ArrayBuffer, b: ArrayBuffer) => {
+	if (a.byteLength !== b.byteLength) return false
+
+	const dv1 = new Int8Array(a)
+	const dv2 = new Int8Array(b)
+	for (let i = 0; i < a.byteLength; i++) {
+		if (dv1[i] != dv2[i]) return false
+	}
+	return true
+}
 
 self.addEventListener('install', (event: ExtendableEvent) => {
 	event.waitUntil(self.skipWaiting())
@@ -61,15 +71,24 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 		}
 
 		const fresh = fetch(request).then(resp => {
-			if (resp.status < 400)
-				caches.open(SW_VERSION).then(cache => cache.put(request, resp.clone()))
-			if (swr && cached && resp.status < 400)
+			if (resp.status >= 400)
+				return resp
+
+			// Put a copy of the response in the cache.
+			const _resp = resp.clone()
+			caches.open(SW_VERSION).then(cache => cache.put(request, _resp))
+
+			// If the response is an SWR response, send it to the client.
+			if (swr && cached) {
+				const _cached = cached.clone()
 				resp.clone().arrayBuffer().then(async (buf: ArrayBuffer) => {
+					if (buffEqual(buf, await _cached.arrayBuffer())) return
 					const client = await self.clients.get(event.clientId)
 					client?.postMessage({type: 'SWR', version: SW_VERSION, path: url.pathname, buf}, [buf])
 				})
+			}
 
-			return resp.clone()
+			return resp
 		})
 		return cached ?? fresh
 	}())
