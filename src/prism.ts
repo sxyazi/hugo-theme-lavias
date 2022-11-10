@@ -31,5 +31,8 @@ import 'prismjs/components/prism-docker.min'
 import 'prismjs/components/prism-sql.min'
 import 'prismjs/components/prism-shell-session.min'
 import 'prismjs/components/prism-ini.min'
+import 'prismjs/components/prism-haskell.min'
+import 'prismjs/components/prism-ruby.min'
+import 'prismjs/components/prism-rust.min'
 
 export {highlightAllUnder}
