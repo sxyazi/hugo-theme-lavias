@@ -22,8 +22,11 @@ const styles = css`
     justify-self: end;
     margin-top: 10px;
     margin-right: calc(25px - 100vw + 100%);
-    position: sticky;
-    top: 10px;
+	
+    @media (min-width: 1536px) {
+      position: sticky;
+      top: 10px;
+    }
   }
 
   & > section {

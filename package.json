@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.4.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/katex": "^0.14.0",
     "@types/node": "^18.11.9",
     "@types/nprogress": "^0.2.0",
