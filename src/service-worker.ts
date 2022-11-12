@@ -63,13 +63,13 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 		return
 	}
 
-	const swr = request.headers.get('x-swr')
 	return event.respondWith(async function () {
 		const cached = await caches.match(request)
 		if (cached && cachedOnlyOnce(url.pathname)) {
 			return cached
 		}
 
+		const swr = request.headers.get('x-swr') && cached?.clone()
 		const fresh = fetch(request).then(resp => {
 			if (resp.status >= 400)
 				return resp
@@ -79,14 +79,12 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 			caches.open(SW_VERSION).then(cache => cache.put(request, _resp))
 
 			// If the response is an SWR response, send it to the client.
-			if (swr && cached) {
-				const _cached = cached.clone()
+			if (swr)
 				resp.clone().arrayBuffer().then(async (buf: ArrayBuffer) => {
-					if (buffEqual(buf, await _cached.arrayBuffer())) return
+					if (buffEqual(buf, await swr.arrayBuffer())) return
 					const client = await self.clients.get(event.clientId)
 					client?.postMessage({type: 'SWR', version: SW_VERSION, path: url.pathname, buf}, [buf])
 				})
-			}
 
 			return resp
 		})
