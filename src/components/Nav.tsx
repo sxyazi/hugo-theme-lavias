@@ -1,11 +1,12 @@
 import {useNav} from '../hooks'
 import {Link} from './Link'
 import {useEffect} from 'preact/hooks'
-import {preload} from '../utils'
+import {preload, samePath} from '../utils'
 import {MdDarkMode, MdLightMode} from 'react-icons/md'
 import {css} from '@emotion/css'
 import {useContext} from 'preact/compat'
 import {AppContext} from '../providers/AppProvider'
+import {useLocation} from 'react-router-dom'
 
 const styles = css`
   svg {
@@ -17,9 +18,10 @@ const styles = css`
 export const Nav = () => {
 	const nav = useNav()
 	const {dark, toggle} = useContext(AppContext)
+	const {pathname} = useLocation()
 
 	useEffect(() => {
-		nav.map(({link}) => link.replace(/\//g, '') && preload(link))
+		nav.map(({link}) => !samePath(link, pathname) && preload(link))
 	}, [nav])
 
 	return (

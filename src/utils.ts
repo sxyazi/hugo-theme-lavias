@@ -26,3 +26,9 @@ export const formatDate = (date: Date, format: string) => {
 		}
 	})
 }
+
+export const samePath = (a: string, b: string) => {
+	while (a.includes('//')) a = a.replace('//', '/')
+	while (b.includes('//')) b = b.replace('//', '/')
+	return a.replace(/^\/|\/$/g, '') === b.replace(/^\/|\/$/g, '')
+}
