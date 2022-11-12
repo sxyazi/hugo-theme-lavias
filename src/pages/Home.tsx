@@ -3,6 +3,7 @@ import {formatDate, preload} from '../utils'
 import {Post, usePosts, useTitle} from '../hooks'
 import {useNavigate} from 'react-router-dom'
 import {useEffect, useRef} from 'preact/hooks'
+import {Link} from '../components/Link'
 
 
 const preloadQueue = new Set<string>()
@@ -35,10 +36,10 @@ const Line = ({post}: { post: Post }) => {
 	return (
 		<article
 			ref={refArticle}
-			class="border p-4 rounded mb-4 cursor-pointer transition-all hover:translate-x-2
-              dark:border-slate-600"
-			onClick={() => navigate(post.link)}
+			class="mb-6 p-4 rounded-md cursor-pointer transition-all hover:translate-x-2 shadow drop-shadow
+              bg-white dark:bg-slate-800"
 		>
+			<Link to={post.link} className="block w-full h-full absolute inset-0"/>
 			<span class="font-medium text-lg text-pink-600 dark:text-pink-400">{post.title}</span>
 			<time class="ml-2 text-sm text-slate-400 dark:text-slate-400">{formatDate(post.date!, 'w, m d, Y')}</time>
 			<summary class="list-none mt-3 text-slate-700 dark:text-slate-300">{post.summary}</summary>
@@ -58,7 +59,7 @@ export const Home = () => {
 	return (
 		<Layout>
 			{posts.length > 0 && <>
-				<h2 class="font-medium text-xl mb-4 dark:text-slate-200">My posts:</h2>
+				<h2 class="font-medium text-xl mb-6 dark:text-slate-200">My posts:</h2>
 				{posts.map((post) => <Line post={post}/>)}
 			</>}
 		</Layout>
