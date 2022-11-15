@@ -1,7 +1,7 @@
 import {useNav} from '../hooks'
 import {Link} from './Link'
 import {useEffect} from 'preact/hooks'
-import {preload, samePath} from '../utils'
+import {canPreload, preload} from '../utils'
 import {MdDarkMode, MdLightMode} from 'react-icons/md'
 import {css} from '@emotion/css'
 import {useContext} from 'preact/compat'
@@ -21,7 +21,7 @@ export const Nav = () => {
 	const {pathname} = useLocation()
 
 	useEffect(() => {
-		nav.map(({link}) => !samePath(link, pathname) && preload(link))
+		nav.map(({link}) => canPreload(pathname, link) && preload(link))
 	}, [nav])
 
 	return (

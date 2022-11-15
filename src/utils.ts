@@ -27,8 +27,13 @@ export const formatDate = (date: Date, format: string) => {
 	})
 }
 
-export const samePath = (a: string, b: string) => {
+export const canPreload = (a: string, b: string) => {
+	try {
+		if (new URL(b).origin !== location.origin) return false
+	} catch (ignored) {
+	}
+
 	while (a.includes('//')) a = a.replace('//', '/')
 	while (b.includes('//')) b = b.replace('//', '/')
-	return a.replace(/^\/|\/$/g, '') === b.replace(/^\/|\/$/g, '')
+	return a.replace(/^\/|\/$/g, '') !== b.replace(/^\/|\/$/g, '')
 }

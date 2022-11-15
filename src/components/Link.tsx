@@ -2,15 +2,18 @@ import {Link as _Link, LinkProps, NavLink} from 'react-router-dom'
 import React from 'preact/compat'
 
 interface Props {
-  nav?: boolean
+	nav?: boolean
 }
 
-export const Link = ({nav, className, ...props}: Props & LinkProps) => {
-  className = `text-pink-600 dark:text-pink-400 hover:underline underline-offset-4 ${className ?? ''}`
+const defaultClass = 'text-pink-600 dark:text-pink-400 hover:underline underline-offset-4'
 
-  return (
-    nav ?
-      <NavLink className={className} {...props}/> :
-      <_Link className={className} {...props}/>
-  )
+export const Link = ({nav, ...props}: Props & LinkProps) => {
+	props.className = `${defaultClass} ${props.className ?? ''}`
+
+	// An absolute URL linked to the external site
+	if (typeof props.to === 'string' && /^https:\/\//.test(props.to)) {
+		return <a href={props.to} class="bg-red-300" {...props}/>
+	}
+
+	return nav ? <NavLink {...props}/> : <_Link {...props}/>
 }
