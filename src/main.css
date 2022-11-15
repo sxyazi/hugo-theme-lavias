@@ -11,15 +11,16 @@ body > main {
 }
 
 #nprogress .bar {
-    background-color: #f472b6 !important;
+    @apply bg-accent-400 !important;
 }
 
 #nprogress .peg {
-    box-shadow: 0 0 10px #f472b6, 0 0 5px #f472b6 !important;
+    @apply shadow-accent-400;
+    box-shadow: 0 0 10px var(--tw-shadow-color), 0 0 5px var(--tw-shadow-color) !important;
 }
 
 #nprogress .spinner {
-    display: none !important;
+    @apply hidden !important;
 }
 
 .markdown-content {
@@ -52,11 +53,6 @@ body > main {
 
 :root.dark .markdown-content img.bri {
     filter: brightness(0.8);
-}
-
-/* Markdown blockquote */
-:root.dark .markdown-content blockquote code {
-    @apply bg-slate-600;
 }
 
 /* KaTeX */

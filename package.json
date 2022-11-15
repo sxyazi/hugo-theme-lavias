@@ -9,11 +9,11 @@
     "build": "node cmd.js build"
   },
   "dependencies": {
-    "@chisato/markdown-css": "^1.5.2",
+    "@chisato/markdown-css": "^1.5.3",
     "@emotion/css": "^11.10.5",
     "katex": "^0.16.3",
     "nprogress": "^0.2.0",
-    "preact": "^10.11.2",
+    "preact": "^10.11.3",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "react-icons": "^4.6.0",
