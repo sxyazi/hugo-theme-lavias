@@ -14,7 +14,7 @@ const styles = css`
     'nav'
     'content'
     'foot';
-  grid-template-rows: 50px 1fr 30px;
+  grid-template-rows: 60px 1fr 30px;
   grid-template-columns: 1fr;
 
   & > nav {
@@ -22,7 +22,7 @@ const styles = css`
     justify-self: end;
     margin-top: 10px;
     margin-right: calc(25px - 100vw + 100%);
-	
+
     @media (min-width: 1536px) {
       position: sticky;
       top: 10px;
@@ -31,11 +31,6 @@ const styles = css`
 
   & > section {
     grid-area: content;
-    justify-self: center;
-  }
-
-  & > footer {
-    grid-area: foot;
     justify-self: center;
   }
 `

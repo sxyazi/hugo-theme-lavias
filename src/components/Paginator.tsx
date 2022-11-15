@@ -13,7 +13,7 @@ export const Paginator = () => {
 	}, [prev, next])
 
 	return (
-		<footer class="flex mt-4 pb-16">
+		<footer class="flex mt-4 sm:pb-8">
 			{next && <Link to={next} className="flex items-center mr-8">
 				<MdNavigateBefore size="20"/> Next
 			</Link>}

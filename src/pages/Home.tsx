@@ -1,7 +1,6 @@
 import {Layout} from '../components/Layout'
 import {formatDate, preload} from '../utils'
 import {Post, usePosts, useTitle} from '../hooks'
-import {useNavigate} from 'react-router-dom'
 import {useEffect, useRef} from 'preact/hooks'
 import {Link} from '../components/Link'
 
@@ -10,7 +9,6 @@ const preloadQueue = new Set<string>()
 const preloadSucceeded = new Set<string>()
 
 const Line = ({post}: { post: Post }) => {
-	const navigate = useNavigate()
 	const refArticle = useRef<HTMLElement>(null)
 
 	// Preload on background when mouse is entering
@@ -40,8 +38,10 @@ const Line = ({post}: { post: Post }) => {
 							dark:drop-shadow-none will-change-transform bg-white dark:bg-slate-800"
 		>
 			<Link to={post.link} className="block w-full h-full absolute inset-0"/>
-			<span class="font-medium text-lg text-pink-600 dark:text-pink-400">{post.title}</span>
-			<time class="ml-2 text-sm text-slate-400 dark:text-slate-400">{formatDate(post.date!, 'w, m d, Y')}</time>
+			<span class="font-medium text-lg text-pink-600 dark:text-pink-400 mr-2">{post.title}</span>
+			<time class="text-sm whitespace-nowrap text-slate-400 dark:text-slate-400">
+				{formatDate(post.date!, 'w, m d, Y')}
+			</time>
 			<summary class="list-none mt-3 text-slate-700 dark:text-slate-300 line-clamp-3">{post.summary}</summary>
 		</article>
 	)
