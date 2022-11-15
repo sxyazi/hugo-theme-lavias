@@ -16,7 +16,7 @@ const TagLine = ({tag}: { tag: Tag }) => {
 const PostLine = ({post}: { post: Post }) => {
 	return (
 		<article className="mb-4">
-			<Link to={post.link} className="text-pink-600 hover:underline underline-offset-4">{post.title}</Link>
+			<Link to={post.link} className="text-accent-600 hover:underline underline-offset-4">{post.title}</Link>
 			<time className="ml-2 text-xs text-slate-500 dark:text-slate-400">{formatDate(post.date!, 'w, m d, Y')}</time>
 		</article>
 	)

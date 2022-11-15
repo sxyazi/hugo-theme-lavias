@@ -38,7 +38,7 @@ const Line = ({post}: { post: Post }) => {
 							dark:drop-shadow-none will-change-transform bg-white dark:bg-slate-800"
 		>
 			<Link to={post.link} className="block w-full h-full absolute inset-0"/>
-			<span class="font-medium text-lg text-pink-600 dark:text-pink-400 mr-2">{post.title}</span>
+			<span class="font-medium text-lg text-accent-600 dark:text-accent-400 mr-2">{post.title}</span>
 			<time class="text-sm whitespace-nowrap text-slate-400 dark:text-slate-400">
 				{formatDate(post.date!, 'w, m d, Y')}
 			</time>

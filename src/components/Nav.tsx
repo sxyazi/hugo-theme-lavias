@@ -31,7 +31,7 @@ export const Nav = () => {
 					{item.name}
 				</Link>,
 			)}
-			<button class="px-2 text-pink-600 dark:text-pink-400" onClick={toggle}>
+			<button class="px-2 text-accent-600 dark:text-accent-400" onClick={toggle}>
 				{dark ? <MdLightMode size="19"/> : <MdDarkMode size="19"/>}
 			</button>
 		</nav>

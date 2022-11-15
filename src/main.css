@@ -42,7 +42,7 @@ body > main {
 }
 
 .markdown-content h2::before {
-    @apply border-pink-600 dark:border-pink-400;
+    @apply border-accent-600 dark:border-accent-400;
 }
 
 /* Markdown image */
@@ -52,6 +52,11 @@ body > main {
 
 :root.dark .markdown-content img.bri {
     filter: brightness(0.8);
+}
+
+/* Markdown blockquote */
+:root.dark .markdown-content blockquote code {
+    @apply bg-slate-600;
 }
 
 /* KaTeX */
