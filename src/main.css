@@ -59,3 +59,13 @@ body > main {
 .katex-display .katex-html {
     overflow: auto hidden;
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 0.3em !important;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-accent-400 !important;
+    border-radius: 1em;
+}
