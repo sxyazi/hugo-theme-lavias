@@ -62,10 +62,10 @@ body > main {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 0.3em !important;
+    width: 0.5em;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-accent-400 !important;
+    @apply bg-accent-400;
     border-radius: 1em;
 }
