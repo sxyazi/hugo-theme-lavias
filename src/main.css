@@ -15,8 +15,8 @@ body > main {
 }
 
 #nprogress .peg {
-    @apply shadow-accent-400;
-    box-shadow: 0 0 10px var(--tw-shadow-color), 0 0 5px var(--tw-shadow-color) !important;
+    box-shadow: 0 0 10px theme(colors.accent.400),
+                0 0 5px theme(colors.accent.400) !important;
 }
 
 #nprogress .spinner {
@@ -61,11 +61,20 @@ body > main {
 }
 
 /* Custom scrollbar */
+:root {
+    scrollbar-color: theme(colors.accent.400) transparent;
+}
+
 ::-webkit-scrollbar {
-    width: 0.5em;
+    @apply w-1.5;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-accent-400;
-    border-radius: 1em;
+    @apply bg-accent-400 rounded;
+}
+
+@media (pointer: fine) {
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
 }
