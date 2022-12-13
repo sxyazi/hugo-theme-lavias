@@ -78,7 +78,7 @@ body > main {
 }
 
 ::-webkit-scrollbar {
-    @apply w-1.5;
+    @apply w-1.5 h-1.5;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -87,6 +87,6 @@ body > main {
 
 @media (pointer: fine) {
     ::-webkit-scrollbar {
-        @apply w-2;
+        @apply w-2 h-2;
     }
 }
