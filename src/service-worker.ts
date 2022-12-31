@@ -43,7 +43,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 
 self.addEventListener('activate', (event: ExtendableEvent) => {
 	event.waitUntil(async function () {
-		await self.clients.claim()
+		// await self.clients.claim()
 		await caches.keys()
 			.then(keys => keys.filter(key => key !== SW_VERSION))
 			.then(keys => Promise.all(keys.map(key => caches.delete(key))))
