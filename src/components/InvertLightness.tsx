@@ -1,6 +1,6 @@
 export const InvertLightness = () => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+		<svg xmlns="http://www.w3.org/2000/svg" className="hidden">
 			<filter id="invertLightness" x="0" y="0" style="color-interpolation-filters: sRGB">
 				<feColorMatrix type="matrix" in="SourceGraphic" result="red" values="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1"/>
 				<feColorMatrix type="matrix" in="SourceGraphic" result="green"

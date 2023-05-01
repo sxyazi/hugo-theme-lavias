@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'preact/hooks'
-import {useSource} from './useSource'
+import {useEffect, useState} from "preact/hooks"
+import {useSource} from "./useSource"
 
 export type Nav = {
 	name: string
@@ -13,8 +13,8 @@ export const useNav = () => {
 	const [navs, setNavs] = useState<Nav[]>(prevNavs)
 
 	useEffect(() => {
-		const navs = Array.from(source.querySelectorAll('#nav > a')).map((a) => {
-			return {name: a.textContent!, link: a.getAttribute('href')!}
+		const navs = [...source.querySelectorAll("#nav > a")].map(a => {
+			return {name: a.textContent!, link: a.getAttribute("href")!}
 		})
 		if (!navs.length) return
 
@@ -23,7 +23,6 @@ export const useNav = () => {
 		if (!prevNavs.length) {
 			setNavs(prevNavs = navs)
 		}
-
 	}, [source])
 	return navs
 }

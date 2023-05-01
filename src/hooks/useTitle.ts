@@ -1,9 +1,11 @@
-import {useEffect, useRef} from 'preact/hooks'
+import {useEffect} from "preact/hooks"
 
 export const useTitle = (title?: string) => {
-	if (title === undefined) return
+	useEffect(() => {
+		if (!title) return
+		const prevTitle = document.title
 
-	const prevTitleRef = useRef(document.title)
-	if (document.title !== title) document.title = title
-	useEffect(() => () => document.title = prevTitleRef.current, [])
+		document.title = title
+		return () => document.title = prevTitle
+	}, [title])
 }

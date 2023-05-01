@@ -1,8 +1,8 @@
-import {usePagination} from '../hooks'
-import {MdNavigateBefore, MdNavigateNext} from 'react-icons/md'
-import {Link} from './Link'
-import {useEffect} from 'preact/hooks'
-import {preload} from '../utils'
+import {usePagination} from "../hooks"
+import {MdNavigateBefore, MdNavigateNext} from "react-icons/md"
+import {Link} from "./Link"
+import {useEffect} from "preact/hooks"
+import {preload} from "../utils"
 
 export const Paginator = () => {
 	const {prev, next} = usePagination()
@@ -13,13 +13,13 @@ export const Paginator = () => {
 	}, [prev, next])
 
 	return (
-		<footer class="flex mt-4 sm:pb-8">
-			{next && <Link to={next} className="flex items-center mr-8">
-				<MdNavigateBefore size="20"/> Next
+		<footer className="flex mt-4 sm:pb-8">
+			{next && <Link to={next} className="flex items-center pr-2.5">
+				<MdNavigateBefore size="20" /> Prev
 			</Link>}
 
-			{prev && <Link to={prev} className="flex items-center">
-				Prev <MdNavigateNext size="20"/>
+			{prev && <Link to={prev} className="flex items-center pl-2.5">
+				Next <MdNavigateNext size="20" />
 			</Link>}
 		</footer>
 	)

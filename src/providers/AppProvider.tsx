@@ -1,21 +1,21 @@
-import {ComponentChildren, createContext, createRef, RefObject} from 'preact'
-import {EMPTY_DIV} from '../utils'
-import {useLoading} from '../hooks/useLoading'
-import {useTheme} from '../hooks'
+import {ComponentChildren, createContext, createRef, RefObject} from "preact"
+import {EMPTY_DIV} from "../utils"
+import {useLoading} from "../hooks/useLoading"
+import {useTheme} from "../hooks"
 
 export const AppContext = createContext<{
 	path: RefObject<string>
 	source: HTMLElement
 
 	dark: boolean
-	toggle: () => void
+	toggle:() => void
 }>({
-	path: createRef(),
-	source: EMPTY_DIV,
+			path  : createRef(),
+			source: EMPTY_DIV,
 
-	dark: false,
-	toggle: () => void 0,
-})
+			dark  : false,
+			toggle: () => void 0,
+		})
 
 export const AppProvider = ({children}: { children: ComponentChildren }) => {
 	const {path, source} = useLoading()
@@ -23,8 +23,10 @@ export const AppProvider = ({children}: { children: ComponentChildren }) => {
 
 	return (
 		<AppContext.Provider value={{
-			source, path,
-			dark, toggle,
+			source,
+			path,
+			dark,
+			toggle,
 		}}>
 			{children}
 		</AppContext.Provider>

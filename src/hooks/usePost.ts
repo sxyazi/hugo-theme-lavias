@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'preact/hooks'
-import {Tag} from './useTags'
-import {useSource} from './useSource'
+import {useEffect, useState} from "preact/hooks"
+import {Tag} from "./useTags"
+import {useSource} from "./useSource"
 
 export type Post = {
 	title: string
@@ -16,19 +16,18 @@ export const usePost = () => {
 	const source = useSource()
 
 	useEffect(() => {
-		if (!source.querySelector('#post')) {
+		if (!source.querySelector("#post")) {
 			return setPost(undefined)
 		}
 
-		const time = source.querySelector('#post > time')
-
+		const time = source.querySelector("#post > time")
 		setPost({
-			title: source.querySelector('#post > h1')?.textContent!,
-			link: location.href,
-			date: time ? new Date(time.getAttribute('datetime')!) : undefined,
-			content: source.querySelector('#post > div')?.innerHTML!,
-			tags: Array.from(source.querySelectorAll('#post > ul a')).map((a) => {
-				return {name: a.textContent!, link: a.getAttribute('href')!}
+			title  : source.querySelector("#post > h1")?.textContent ?? "",
+			link   : location.href,
+			date   : time ? new Date(time.getAttribute("datetime")!) : undefined,
+			content: source.querySelector("#post > div")?.innerHTML ?? "",
+			tags   : [...source.querySelectorAll("#post > ul a")].map(a => {
+				return {name: a.textContent!, link: a.getAttribute("href")!}
 			}),
 		})
 	}, [source])

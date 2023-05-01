@@ -1,7 +1,7 @@
-import {useContext} from 'preact/compat'
-import {AppContext} from '../providers/AppProvider'
-import {useLocation} from 'react-router-dom'
-import {EMPTY_DIV} from '../utils'
+import {useContext} from "preact/compat"
+import {AppContext} from "../providers/AppProvider"
+import {useLocation} from "react-router-dom"
+import {EMPTY_DIV} from "../utils"
 
 export const useSource = () => {
 	const location = useLocation()
