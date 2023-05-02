@@ -1,10 +1,10 @@
-import {Post, Tag, usePosts, useTags, useTitle} from "../hooks"
-import {useParams} from "react-router-dom"
-import {formatDate} from "../utils"
-import {Layout} from "../components/Layout"
-import {Link} from "../components/Link"
+import { Post, Tag, usePosts, useTags, useTitle } from "../hooks"
+import { useParams } from "react-router-dom"
+import { formatDate } from "../utils"
+import { Layout } from "../components/Layout"
+import { Link } from "../components/Link"
 
-const TagLine = ({tag}: { tag: Tag }) => {
+const TagLine = ({ tag }: { tag: Tag }) => {
 	return (
 		<p className="my-2">
 			<Link to={tag.link}>{tag.name}</Link>
@@ -13,7 +13,7 @@ const TagLine = ({tag}: { tag: Tag }) => {
 	)
 }
 
-const PostLine = ({post}: { post: Post }) => {
+const PostLine = ({ post }: { post: Post }) => {
 	return (
 		<article className="mb-4">
 			<Link to={post.link} className="text-accent-600 hover:underline underline-offset-4">{post.title}</Link>

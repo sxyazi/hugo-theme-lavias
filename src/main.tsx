@@ -1,10 +1,10 @@
-import {render} from "preact"
-import {App} from "./App"
+import { render } from "preact"
+import { App } from "./App"
 import "./main.css"
 import "@chisato/markdown-css/dist/styles.css"
 import "nprogress/nprogress.css"
-import {BrowserRouter} from "react-router-dom"
-import {registerSW} from "virtual:sw-plugin"
+import { BrowserRouter } from "react-router-dom"
+import { registerSW } from "virtual:sw-plugin"
 
 render(
 	<BrowserRouter>

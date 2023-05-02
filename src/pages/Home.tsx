@@ -1,13 +1,13 @@
-import {Layout} from "../components/Layout"
-import {formatDate, preload} from "../utils"
-import {Post, type Sakura, usePosts, useSakura, useTitle} from "../hooks"
-import {useEffect, useRef} from "preact/hooks"
-import {Link} from "react-router-dom"
+import { Layout } from "../components/Layout"
+import { formatDate, preload } from "../utils"
+import { Post, type Sakura, usePosts, useSakura, useTitle } from "../hooks"
+import { useEffect, useRef } from "preact/hooks"
+import { Link } from "react-router-dom"
 
 const preloadQueue = new Set<string>()
 const preloadSucceeded = new Set<string>()
 
-const Line = ({post, sakura}: { post: Post, sakura: Sakura }) => {
+const Line = ({ post, sakura }: { post: Post, sakura: Sakura }) => {
 	const refArticle = useRef<HTMLElement>(null)
 
 	// Preload on background when mouse is entering
@@ -31,7 +31,7 @@ const Line = ({post, sakura}: { post: Post, sakura: Sakura }) => {
 			el.removeEventListener("mouseenter", onMouseEnter)
 			el.removeEventListener("mouseleave", onMouseLeave)
 		}
-	}, [])
+	}, [post.link, sakura])
 
 	return (
 		<article ref={refArticle} className="my-12 relative">
@@ -49,7 +49,7 @@ export const Home = () => {
 	const refCanvas = useRef<HTMLCanvasElement>(null)
 
 	const posts = usePosts()
-	const sakura = useSakura({canvas: refCanvas})
+	const sakura = useSakura({ canvas: refCanvas })
 	useTitle(document.querySelector("title")?.dataset?.site)
 
 	useEffect(() => {

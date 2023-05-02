@@ -1,10 +1,10 @@
-import {Route, Routes} from "react-router-dom"
-import {Home} from "./pages/Home"
-import {Archives} from "./pages/Archives"
-import {Tags} from "./pages/Tags"
-import {Post} from "./pages/Post"
-import {useEffect} from "preact/hooks"
-import {AppProvider} from "./providers/AppProvider"
+import { Route, Routes } from "react-router-dom"
+import { Home } from "./pages/Home"
+import { Archives } from "./pages/Archives"
+import { Tags } from "./pages/Tags"
+import { Post } from "./pages/Post"
+import { useEffect } from "preact/hooks"
+import { AppProvider } from "./providers/AppProvider"
 
 export function App() {
 	useEffect(() => {

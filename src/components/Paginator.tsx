@@ -1,11 +1,11 @@
-import {usePagination} from "../hooks"
-import {MdNavigateBefore, MdNavigateNext} from "react-icons/md"
-import {Link} from "./Link"
-import {useEffect} from "preact/hooks"
-import {preload} from "../utils"
+import { usePagination } from "../hooks"
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md"
+import { Link } from "./Link"
+import { useEffect } from "preact/hooks"
+import { preload } from "../utils"
 
 export const Paginator = () => {
-	const {prev, next} = usePagination()
+	const { prev, next } = usePagination()
 
 	useEffect(() => {
 		if (prev) preload(prev)

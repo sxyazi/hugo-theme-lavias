@@ -1,10 +1,10 @@
-import {usePost, useTitle} from "../hooks"
-import {Layout} from "../components/Layout"
-import {useEffect, useRef} from "preact/hooks"
-import {formatDate} from "../utils"
-import {useContext} from "preact/compat"
-import {AppContext} from "../providers/AppProvider"
-import {InvertLightness} from "../components/InvertLightness"
+import { usePost, useTitle } from "../hooks"
+import { Layout } from "../components/Layout"
+import { useEffect, useRef } from "preact/hooks"
+import { formatDate } from "../utils"
+import { useContext } from "preact/compat"
+import { AppContext } from "../providers/AppProvider"
+import { InvertLightness } from "../components/InvertLightness"
 
 export const Post = () => {
 	const post = usePost()
@@ -13,7 +13,7 @@ export const Post = () => {
 
 	useEffect(() => {
 		const highlight = (content: HTMLDivElement) => {
-			const langAlias: { [key: string]: string } = {pgsql: "sql", shell: "bash", golang: "go"}
+			const langAlias: { [key: string]: string } = { pgsql: "sql", shell: "bash", golang: "go" }
 
 			for (const el of content.querySelectorAll("pre>code")) {
 				if (!el.className.startsWith("language-")) {
@@ -35,7 +35,7 @@ export const Post = () => {
 				}
 			}
 
-			import("../prism").then(({highlightAllUnder}) => {
+			import("../prism").then(({ highlightAllUnder }) => {
 				refContent.current && highlightAllUnder(refContent.current)
 			})
 		}
@@ -43,7 +43,7 @@ export const Post = () => {
 		if (post && refContent.current) {
 			highlight(refContent.current)
 		}
-	}, [post, refContent.current])
+	}, [post])
 
 	useEffect(() => {
 		const renderMath = async (content: HTMLDivElement) => {
@@ -52,8 +52,8 @@ export const Post = () => {
 			return (await import("katex/contrib/auto-render")).default(content, {
 				output    : "html",
 				delimiters: [
-					{left: "$$", right: "$$", display: true},
-					{left: "$", right: "$", display: false},
+					{ left: "$$", right: "$$", display: true },
+					{ left: "$", right: "$", display: false },
 				],
 				throwOnError: false,
 			})
@@ -62,9 +62,9 @@ export const Post = () => {
 		if (post && refContent.current) {
 			renderMath(refContent.current).catch(console.error)
 		}
-	}, [post, refContent.current])
+	}, [post])
 
-	const {dark} = useContext(AppContext)
+	const { dark } = useContext(AppContext)
 	return (
 		<Layout className={`relative markdown-content ${dark ? "markdown-content-dark" : ""}`}>
 			<InvertLightness/>
@@ -78,7 +78,7 @@ export const Post = () => {
 						</time>
 					: <></>
 				}
-				<div ref={refContent} dangerouslySetInnerHTML={{__html: post.content!}}></div>
+				<div ref={refContent} dangerouslySetInnerHTML={{ __html: post.content! }}></div>
 			</>}
 		</Layout>
 	)

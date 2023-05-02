@@ -1,5 +1,5 @@
-import {useEffect, useState} from "preact/hooks"
-import {useSource} from "./useSource"
+import { useEffect, useState } from "preact/hooks"
+import { useSource } from "./useSource"
 
 export type Tag = {
 	name: string

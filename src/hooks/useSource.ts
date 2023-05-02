@@ -1,11 +1,11 @@
-import {useContext} from "preact/compat"
-import {AppContext} from "../providers/AppProvider"
-import {useLocation} from "react-router-dom"
-import {EMPTY_DIV} from "../utils"
+import { useContext } from "preact/compat"
+import { AppContext } from "../providers/AppProvider"
+import { useLocation } from "react-router-dom"
+import { EMPTY_DIV } from "../utils"
 
 export const useSource = () => {
 	const location = useLocation()
-	const {source, path} = useContext(AppContext)
+	const { source, path } = useContext(AppContext)
 
 	if (location.pathname !== path.current) {
 		return EMPTY_DIV

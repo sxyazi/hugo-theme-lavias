@@ -1,4 +1,4 @@
-import {Ref, useEffect, useMemo, useRef} from "preact/hooks"
+import { Ref, useEffect, useMemo, useRef } from "preact/hooks"
 import petal from "../assets/sakura.png"
 
 const limit = (n: number) => Math.min(0.1, Math.max(0.05, n))
@@ -12,12 +12,12 @@ interface Props {
 	canvas: Ref<HTMLCanvasElement>
 }
 
-export const useSakura = ({canvas}: Props): Sakura => {
+export const useSakura = ({ canvas }: Props): Sakura => {
 	const percentX = useRef(0)
 	const percentY = useRef(0)
 	useEffect(() => {
 		const onMouseMove = (e: MouseEvent) => {
-			const {top, bottom, left, right, width, height} = canvas.current!.getBoundingClientRect()
+			const { top, bottom, left, right, width, height } = canvas.current!.getBoundingClientRect()
 			if (e.clientX < left || e.clientX > right || e.clientY < top || e.clientY > bottom) return
 
 			percentX.current = (e.clientX - left) / width
@@ -30,16 +30,14 @@ export const useSakura = ({canvas}: Props): Sakura => {
 			window.removeEventListener("mousemove", onMouseMove)
 			window.removeEventListener("scroll", overlay)
 		}
-	}, [])
+	}, [canvas])
 
-	const image = useMemo(() => {
-		const image = new Image()
-		image.src = petal
-		return image
-	}, [])
+	const image = useMemo(() =>
+		Object.assign(new Image(), { src: petal })
+	, [])
 	const blossom = useMemo(() => {
 		const rotate = Math.random()
-		return Array.from({length: 10}).map(() => ({
+		return Array.from({ length: 10 }).map(() => ({
 			x      : Math.random(),
 			y      : Math.random(),
 			w      : Math.random() * 10 + 5,
@@ -52,9 +50,9 @@ export const useSakura = ({canvas}: Props): Sakura => {
 		}))
 	}, [])
 
-	const target = useRef<HTMLElement|null>()
+	const target = useRef<HTMLElement | null>()
 	const draw = () => {
-		const {width, height} = canvas.current!
+		const { width, height } = canvas.current!
 		const ctx = canvas.current!.getContext("2d")!
 		ctx.clearRect(0, 0, width, height)
 

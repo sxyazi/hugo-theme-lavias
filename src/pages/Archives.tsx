@@ -1,9 +1,9 @@
-import {Archive, useArchives, useTitle} from "../hooks"
-import {Layout} from "../components/Layout"
-import {formatDate} from "../utils"
-import {Link} from "../components/Link"
+import { Archive, useArchives, useTitle } from "../hooks"
+import { Layout } from "../components/Layout"
+import { formatDate } from "../utils"
+import { Link } from "../components/Link"
 
-const Line = ({archive}: { archive: Archive }) => {
+const Line = ({ archive }: { archive: Archive }) => {
 	return (
 		<article className="mb-4">
 			<Link to={archive.link}>{archive.title}</Link>

@@ -1,11 +1,11 @@
-import {useEffect, useState} from "preact/hooks"
-import {useSource} from "./useSource"
+import { useEffect, useState } from "preact/hooks"
+import { useSource } from "./useSource"
 
 export type Archive = {
-  title: string
-  link: string
-  date: Date
-  year: number
+	title: string
+	link: string
+	date: Date
+	year: number
 }
 
 export const useArchives = () => {

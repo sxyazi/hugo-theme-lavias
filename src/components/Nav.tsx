@@ -1,12 +1,12 @@
-import {useNav} from "../hooks"
-import {Link} from "./Link"
-import {useEffect} from "preact/hooks"
-import {canPreload, preload} from "../utils"
-import {MdDarkMode, MdLightMode} from "react-icons/md"
-import {css} from "@emotion/css"
-import {useContext} from "preact/compat"
-import {AppContext} from "../providers/AppProvider"
-import {useLocation} from "react-router-dom"
+import { useNav } from "../hooks"
+import { Link } from "./Link"
+import { useEffect } from "preact/hooks"
+import { canPreload, preload } from "../utils"
+import { MdDarkMode, MdLightMode } from "react-icons/md"
+import { css } from "@emotion/css"
+import { useContext } from "preact/compat"
+import { AppContext } from "../providers/AppProvider"
+import { useLocation } from "react-router-dom"
 
 const styles = css`
   svg {
@@ -17,12 +17,12 @@ const styles = css`
 
 export const Nav = () => {
 	const nav = useNav()
-	const {dark, toggle} = useContext(AppContext)
-	const {pathname} = useLocation()
+	const { dark, toggle } = useContext(AppContext)
+	const { pathname } = useLocation()
 
 	useEffect(() => {
-		nav.map(({link}) => canPreload(pathname, link) && preload(link))
-	}, [nav])
+		nav.map(({ link }) => canPreload(pathname, link) && preload(link))
+	}, [nav, pathname])
 
 	return (
 		<nav className={styles}>

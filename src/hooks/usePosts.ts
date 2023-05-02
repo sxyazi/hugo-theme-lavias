@@ -1,6 +1,6 @@
-import {useEffect, useState} from "preact/hooks"
-import {useSource} from "./useSource"
-import {Post} from "./usePost"
+import { useEffect, useState } from "preact/hooks"
+import { useSource } from "./useSource"
+import { Post } from "./usePost"
 
 export const usePosts = () => {
 	const [posts, setPosts] = useState<Post[]>([])

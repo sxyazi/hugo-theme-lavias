@@ -57,7 +57,7 @@ self.addEventListener("fetch", (event: FetchEvent) => {
 		return
 	}
 
-	const {request, clientId} = event
+	const { request, clientId } = event
 	const url = new URL(request.url)
 	if (url.hostname !== hostname) {
 		return
@@ -83,7 +83,7 @@ self.addEventListener("fetch", (event: FetchEvent) => {
 				resp.clone().arrayBuffer().then(async (buf: ArrayBuffer) => {
 					if (buffEqual(buf, await swr.arrayBuffer())) return
 					const client = await self.clients.get(clientId)
-					client?.postMessage({type: "SWR", version: SW_VERSION, path: url.pathname, buf}, [buf])
+					client?.postMessage({ type: "SWR", version: SW_VERSION, path: url.pathname, buf }, [buf])
 				})
 
 			return resp

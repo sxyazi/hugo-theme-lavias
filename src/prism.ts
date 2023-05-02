@@ -1,4 +1,4 @@
-import {highlightAllUnder} from "prismjs"
+import { highlightAllUnder } from "prismjs"
 
 // Styles
 import "prismjs/plugins/line-highlight/prism-line-highlight.css"
@@ -36,4 +36,4 @@ import "prismjs/components/prism-ruby.min"
 import "prismjs/components/prism-rust.min"
 
 // eslint-disable-next-line unicorn/prefer-export-from
-export {highlightAllUnder}
+export { highlightAllUnder }

@@ -1,7 +1,7 @@
-import {Nav} from "./Nav"
-import {css} from "@emotion/css"
-import {ComponentChildren} from "preact"
-import {Paginator} from "./Paginator"
+import { Nav } from "./Nav"
+import { css } from "@emotion/css"
+import { ComponentChildren } from "preact"
+import { Paginator } from "./Paginator"
 
 interface Props {
 	children: ComponentChildren
@@ -35,7 +35,7 @@ const styles = css`
   }
 `
 
-export const Layout = ({children, className}: Props) => {
+export const Layout = ({ children, className }: Props) => {
 	return (
 		<div className={styles}>
 			<Nav/>

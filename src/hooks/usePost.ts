@@ -1,6 +1,6 @@
-import {useEffect, useState} from "preact/hooks"
-import {Tag} from "./useTags"
-import {useSource} from "./useSource"
+import { useEffect, useState } from "preact/hooks"
+import { Tag } from "./useTags"
+import { useSource } from "./useSource"
 
 export type Post = {
 	title: string
@@ -27,7 +27,7 @@ export const usePost = () => {
 			date   : time ? new Date(time.getAttribute("datetime")!) : undefined,
 			content: source.querySelector("#post > div")?.innerHTML ?? "",
 			tags   : [...source.querySelectorAll("#post > ul a")].map(a => {
-				return {name: a.textContent!, link: a.getAttribute("href")!}
+				return { name: a.textContent!, link: a.getAttribute("href")! }
 			}),
 		})
 	}, [source])
