@@ -1,4 +1,4 @@
-import { Ref, useEffect, useMemo, useRef } from "preact/hooks"
+import { Ref, useCallback, useEffect, useMemo, useRef } from "preact/hooks"
 import petal from "../assets/sakura.png"
 
 const limit = (n: number) => Math.min(0.1, Math.max(0.05, n))
@@ -51,8 +51,10 @@ export const useSakura = ({ canvas }: Props): Sakura => {
 	}, [])
 
 	const target = useRef<HTMLElement | null>()
-	const draw = () => {
+	const draw = useCallback(() => {
+		if (!target.current || !canvas.current) return
 		const { width, height } = canvas.current!
+
 		const ctx = canvas.current!.getContext("2d")!
 		ctx.clearRect(0, 0, width, height)
 
@@ -78,21 +80,21 @@ export const useSakura = ({ canvas }: Props): Sakura => {
 			ctx.drawImage(image, 0, 0, b.w, b.h)
 			ctx.setTransform(1, 0, 0, 1, 0, 0)
 		}
-		if (target.current) {
-			requestAnimationFrame(draw)
-		}
-	}
+		requestAnimationFrame(draw)
+	}, [])
 
 	const start = (ref: Ref<HTMLElement>) => {
-		if (target.current) return
-		target.current = ref.current
+		new Promise<void>(reslove => {
+			if (image.complete) reslove()
+			// eslint-disable-next-line unicorn/prefer-add-event-listener
+			else image.onload = () => reslove()
+		}).then(() => {
+			if (target.current) return
+			target.current = ref.current
 
-		overlay()
-		if (image.complete) {
+			overlay()
 			draw()
-		} else {
-			image.addEventListener("load", draw)
-		}
+		})
 	}
 
 	const stop = () => {

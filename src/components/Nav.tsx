@@ -22,7 +22,7 @@ export const Nav = () => {
 
 	useEffect(() => {
 		nav.map(({ link }) => canPreload(pathname, link) && preload(link))
-	}, [nav, pathname])
+	}, [nav])
 
 	return (
 		<nav className={styles}>
