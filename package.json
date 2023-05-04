@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.5.0",
-		"@sxyazi/eslint-config": "^1.0.2",
+		"@sxyazi/eslint-config": "^1.0.3",
 		"@types/katex": "^0.16.0",
 		"@types/node": "^18.16.3",
 		"@types/nprogress": "^0.2.0",

@@ -74,7 +74,7 @@ self.addEventListener("fetch", (event: FetchEvent) => {
 			if (resp.status >= 400)
 				return resp
 
-			// Put a copy of the response in the cache.
+			// Put a copy of the response into the cache.
 			const _resp = resp.clone()
 			caches.open(SW_VERSION).then(cache => cache.put(request, _resp))
 

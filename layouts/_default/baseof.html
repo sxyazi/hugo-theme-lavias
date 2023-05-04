@@ -14,7 +14,7 @@
 	{{ template "_internal/twitter_cards.html" . }}
 
 	<title data-site="{{ .Site.Title }}">
-      {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+		{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}
 	</title>
 
 	<!-- Links -->
@@ -28,19 +28,16 @@
 	<link rel="manifest" href="{{ `manifest.json` | relURL }}"/>
 	<meta name="theme-color" content="#ffffff"/>
 
-	<!-- Feed & Analytics -->
-    {{ with .OutputFormats.Get "RSS" }}
-        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
-    {{ end }}
-    {{ if not .Site.IsServer }}
-        {{ template "_internal/google_analytics.html" . }}
-    {{ end }}
+	<!-- Feed -->
+	{{ with .OutputFormats.Get "RSS" }}
+		{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+	{{ end }}
 </head>
 
 <body>
 <main>
-    {{ partial "header.html" . }}
-    {{ block "content" . }}{{ end }}
+	{{ partial "header.html" . }}
+	{{ block "content" . }}{{ end }}
 </main>
 
 <app></app>
@@ -49,5 +46,10 @@
 <!-- Scripts -->
 <script type="module" crossorigin src="/assets/index-d00658ae.js"></script>
 <!-- /Scripts -->
+
+<!-- Analytics -->
+{{ if not .Site.IsServer }}
+	{{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
 </body>
 </html>
