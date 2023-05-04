@@ -4,6 +4,13 @@ import NProgress from "nprogress"
 import { EMPTY_DIV, parse } from "../utils"
 import { packedSW } from "virtual:sw-plugin"
 
+interface SWRMessage {
+	type: "SWR"
+	path: string
+	version: string
+	buf: ArrayBuffer
+}
+
 export const useLoading = () => {
 	const location = useLocation()
 	const path = useRef(location.pathname)
@@ -33,7 +40,7 @@ export const useLoading = () => {
 	}, [location])
 
 	useEffect(() => {
-		const onMessage = ({ data }: MessageEvent) => {
+		const onMessage = ({ data }: MessageEvent<SWRMessage>) => {
 			if (data.type !== "SWR") return
 			if (!packedSW().some(({ version }) => version === data.version)) return
 			if (data.path === location.pathname) {

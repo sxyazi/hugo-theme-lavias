@@ -53,9 +53,9 @@ export const useSakura = ({ canvas }: Props): Sakura => {
 	const target = useRef<HTMLElement | null>()
 	const draw = useCallback(() => {
 		if (!target.current || !canvas.current) return
-		const { width, height } = canvas.current!
+		const { width, height } = canvas.current
 
-		const ctx = canvas.current!.getContext("2d")!
+		const ctx = canvas.current.getContext("2d")!
 		ctx.clearRect(0, 0, width, height)
 
 		for (const b of blossom) {
@@ -84,7 +84,7 @@ export const useSakura = ({ canvas }: Props): Sakura => {
 	}, [])
 
 	const start = (ref: Ref<HTMLElement>) => {
-		new Promise<void>(reslove => {
+		void new Promise<void>(reslove => {
 			if (image.complete) reslove()
 			// eslint-disable-next-line unicorn/prefer-add-event-listener
 			else image.onload = () => reslove()

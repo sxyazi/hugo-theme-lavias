@@ -5,6 +5,7 @@ import { formatDate } from "../utils"
 import { useContext } from "preact/compat"
 import { AppContext } from "../providers/AppProvider"
 import { InvertLightness } from "../components/InvertLightness"
+import { useCount } from "../hooks/useCount"
 
 export const Post = () => {
 	const post = usePost()
@@ -35,7 +36,7 @@ export const Post = () => {
 				}
 			}
 
-			import("../prism").then(({ highlightAllUnder }) => {
+			void import("../prism").then(({ highlightAllUnder }) => {
 				refContent.current && highlightAllUnder(refContent.current)
 			})
 		}
@@ -64,20 +65,18 @@ export const Post = () => {
 		}
 	}, [post])
 
+	const count = useCount(post?.id)
 	const { dark } = useContext(AppContext)
 	return (
 		<Layout className={`relative markdown-content ${dark ? "markdown-content-dark" : ""}`}>
 			<InvertLightness/>
 			{post && <>
 				<h1>{post.title}</h1>
-				{post.date
-					? <time
-							className="absolute top-0 text-xs text-slate-500
+				<span className="absolute top-0 text-xs text-slate-500
 												 dark:text-slate-400 transition-opacity opacity-0 pointer-events-none">
-							{formatDate(post.date, "w, m d, Y")}
-						</time>
-					: <></>
-				}
+					{post.date ? <time>{formatDate(post.date, "w, m d, Y")}</time> : <></>}
+					{count ? <span>{post.date ? " · " : ""}{count.page} view</span> : <></>}
+				</span>
 				<div ref={refContent} dangerouslySetInnerHTML={{ __html: post.content! }}></div>
 			</>}
 		</Layout>

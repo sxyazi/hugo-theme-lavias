@@ -50,7 +50,7 @@ body > main {
     @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600 dark:border-slate-400;
 }
 
-.markdown-content h1:hover + time {
+.markdown-content h1:hover + span {
     opacity: 1;
 }
 

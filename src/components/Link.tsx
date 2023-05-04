@@ -2,6 +2,7 @@ import { Link as _Link, LinkProps, NavLink } from "react-router-dom"
 
 interface Props {
 	nav?: boolean
+	className?: string
 }
 
 const defaultClass = "p-1 text-accent-600 dark:text-accent-400 rounded hover:bg-accent-100 dark:hover:bg-slate-700"

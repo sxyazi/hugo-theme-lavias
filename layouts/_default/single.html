@@ -1,18 +1,18 @@
 {{ define "content" }}
 	<section id="post">
 		<h1>{{ .Title }}</h1>
-      {{ if not .Date.IsZero }}
-				<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "01-02" }}</time>
-      {{ end }}
+		{{ if not .Date.IsZero }}
+			<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "01-02" }}</time>
+		{{ end }}
+		<span>{{ trim .RelPermalink "/" }}</span>
 		<div>{{ .Content }}</div>
 		<ul>
-        {{- range .Params.tags -}}
-					<li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
-        {{- end }}
+			{{- range .Params.tags -}}
+				<li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+			{{- end }}
 		</ul>
-
-      {{ if .Params.TOC }}
-          {{.TableOfContents}}
-      {{ end }}
+		{{ if .Params.TOC }}
+			{{.TableOfContents}}
+		{{ end }}
 	</section>
 {{ end }}

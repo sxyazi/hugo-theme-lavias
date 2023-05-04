@@ -3,6 +3,7 @@ import { Tag } from "./useTags"
 import { useSource } from "./useSource"
 
 export type Post = {
+	id: string
 	title: string
 	link: string
 	date?: Date
@@ -22,6 +23,7 @@ export const usePost = () => {
 
 		const time = source.querySelector("#post > time")
 		setPost({
+			id     : source.querySelector("#post > span")?.textContent ?? "",
 			title  : source.querySelector("#post > h1")?.textContent ?? "",
 			link   : location.href,
 			date   : time ? new Date(time.getAttribute("datetime")!) : undefined,

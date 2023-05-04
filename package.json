@@ -17,11 +17,11 @@
 		"prism-themes": "^1.9.0",
 		"prismjs": "^1.29.0",
 		"react-icons": "^4.8.0",
-		"react-router-dom": "^6.11.0"
+		"react-router-dom": "^6.11.1"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.5.0",
-		"@sxyazi/eslint-config": "^1.0.3",
+		"@sxyazi/eslint-config": "^1.0.4",
 		"@types/katex": "^0.16.0",
 		"@types/node": "^18.16.3",
 		"@types/nprogress": "^0.2.0",

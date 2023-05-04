@@ -76,15 +76,17 @@ self.addEventListener("fetch", (event: FetchEvent) => {
 
 			// Put a copy of the response into the cache.
 			const _resp = resp.clone()
-			caches.open(SW_VERSION).then(cache => cache.put(request, _resp))
+			caches.open(SW_VERSION).then(cache => cache.put(request, _resp)).catch(console.error)
 
 			// If the response is an SWR response, send it to the client.
 			if (swr)
-				resp.clone().arrayBuffer().then(async (buf: ArrayBuffer) => {
-					if (buffEqual(buf, await swr.arrayBuffer())) return
-					const client = await self.clients.get(clientId)
-					client?.postMessage({ type: "SWR", version: SW_VERSION, path: url.pathname, buf }, [buf])
-				})
+				resp.clone().arrayBuffer()
+					.then(async (buf: ArrayBuffer) => {
+						if (buffEqual(buf, await swr.arrayBuffer())) return
+						const client = await self.clients.get(clientId)
+						client?.postMessage({ type: "SWR", version: SW_VERSION, path: url.pathname, buf }, [buf])
+					})
+					.catch(console.error)
 
 			return resp
 		})
