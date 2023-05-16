@@ -7,17 +7,20 @@ export const usePosts = () => {
 	const source = useSource()
 
 	useEffect(() => {
-		setPosts([...source.querySelectorAll("#posts > article")].map(article => {
-			const a = article.querySelector(":scope > a")
-			const time = article.querySelector(":scope > time")
+		setPosts(
+			[...source.querySelectorAll("#posts > article")].map(article => {
+				const a = article.querySelector(":scope > a")
+				const time = article.querySelector(":scope > time")
 
-			return {
-				title  : a?.textContent ?? "",
-				link   : a?.getAttribute("href") ?? "",
-				date   : new Date(time?.getAttribute("datetime") ?? ""),
-				summary: article.querySelector(":scope > p")?.textContent ?? undefined,
-			}
-		}))
+				return {
+					id     : a?.getAttribute("href")?.replace(/^\//, "") ?? "",
+					title  : a?.textContent ?? "",
+					link   : a?.getAttribute("href") ?? "",
+					date   : new Date(time?.getAttribute("datetime") ?? ""),
+					summary: article.querySelector(":scope > p")?.textContent ?? undefined,
+				}
+			}),
+		)
 	}, [source])
 	return posts
 }

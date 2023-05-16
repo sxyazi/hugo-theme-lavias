@@ -3,90 +3,91 @@
 @tailwind utilities;
 
 body {
-    @apply dark:bg-slate-900;
+	@apply dark:bg-slate-900;
 }
 
 body > main {
-    @apply hidden;
+	@apply hidden;
 }
 
 #nprogress .bar {
-    @apply bg-accent-400 !important;
+	@apply bg-accent-400 !important;
 }
 
 #nprogress .peg {
-    box-shadow: 0 0 10px theme(colors.accent.400),
-                0 0 5px theme(colors.accent.400) !important;
+	box-shadow: 0 0 10px theme(colors.accent.400), 0 0 5px theme(colors.accent.400) !important;
 }
 
 #nprogress .spinner {
-    @apply hidden !important;
+	@apply hidden !important;
 }
 
 .markdown-content {
-    @apply text-slate-700 dark:text-slate-300;
-    --md-accent-400: theme(colors.accent.400);
-    --md-accent-500: theme(colors.accent.500);
-    --md-accent-600: theme(colors.accent.600);
+	@apply text-slate-700 dark:text-slate-300;
 
-    --md-slate-50: theme(colors.slate.50);
-    --md-slate-100: theme(colors.slate.100);
-    --md-slate-200: theme(colors.slate.200);
-    --md-slate-300: theme(colors.slate.300);
-    --md-slate-500: theme(colors.slate.500);
-    --md-slate-600: theme(colors.slate.600);
-    --md-slate-700: theme(colors.slate.700);
-    --md-slate-800: theme(colors.slate.800);
+	--md-accent-400: theme(colors.accent.400);
+	--md-accent-500: theme(colors.accent.500);
+	--md-accent-600: theme(colors.accent.600);
+
+	--md-slate-50: theme(colors.slate.50);
+	--md-slate-100: theme(colors.slate.100);
+	--md-slate-200: theme(colors.slate.200);
+	--md-slate-300: theme(colors.slate.300);
+	--md-slate-500: theme(colors.slate.500);
+	--md-slate-600: theme(colors.slate.600);
+	--md-slate-700: theme(colors.slate.700);
+	--md-slate-800: theme(colors.slate.800);
 }
 
 /* Markdown headers */
-.markdown-content :is(h1,h2,h3,h4,h5,h6) {
-    @apply relative text-slate-800 dark:text-slate-200;
+.markdown-content :is(h1, h2, h3, h4, h5, h6) {
+	@apply relative text-slate-800 dark:text-slate-200;
 }
 
-.markdown-content :is(h2,h3,h4,h5,h6)::before {
-    content: '';
-    width: 1em;
-    @apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600 dark:border-slate-400;
+.markdown-content :is(h2, h3, h4, h5, h6)::before {
+	content: "";
+	width: 1em;
+
+	@apply absolute left-px bottom-0 border-t-2 border-dashed border-slate-600 dark:border-slate-400;
 }
 
 .markdown-content h1:hover + span {
-    opacity: 1;
+	opacity: 1;
 }
 
 .markdown-content h2::before {
-    @apply border-accent-600 dark:border-accent-400;
+	@apply border-accent-600 dark:border-accent-400;
 }
 
 /* Markdown image */
 :root.dark .markdown-content img.inv {
-    filter: url(#invertLightness);
+	filter: url("#invertLightness");
 }
 
 :root.dark .markdown-content img.bri {
-    filter: brightness(0.8);
+	filter: brightness(0.8);
 }
 
 /* KaTeX */
 .katex-display .katex-html {
-    overflow: auto hidden;
+	overflow: auto hidden;
 }
 
 /* Custom scrollbar */
 :root {
-    scrollbar-color: theme(colors.accent.400) transparent;
+	scrollbar-color: theme(colors.accent.400) transparent;
 }
 
 ::-webkit-scrollbar {
-    @apply w-1.5 h-1.5;
+	@apply w-1.5 h-1.5;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-accent-400 rounded;
+	@apply bg-accent-400 rounded;
 }
 
 @media (pointer: fine) {
-    ::-webkit-scrollbar {
-        @apply w-2 h-2;
-    }
+	::-webkit-scrollbar {
+		@apply w-2 h-2;
+	}
 }

@@ -10,10 +10,10 @@
 	},
 	"dependencies": {
 		"@chisato/markdown-css": "^1.5.3",
-		"@emotion/css": "^11.10.8",
+		"@emotion/css": "^11.11.0",
 		"katex": "^0.16.7",
 		"nprogress": "^0.2.0",
-		"preact": "^10.13.2",
+		"preact": "^10.14.0",
 		"prism-themes": "^1.9.0",
 		"prismjs": "^1.29.0",
 		"react-icons": "^4.8.0",
@@ -21,16 +21,16 @@
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.5.0",
-		"@sxyazi/eslint-config": "^1.0.4",
+		"@sxyazi/eslint-config": "^1.0.5",
 		"@types/katex": "^0.16.0",
-		"@types/node": "^18.16.3",
+		"@types/node": "^20.1.5",
 		"@types/nprogress": "^0.2.0",
 		"@types/prismjs": "^1.26.0",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.23",
 		"tailwindcss": "^3.3.2",
 		"typescript": "^5.0.4",
-		"vite": "^4.3.4",
+		"vite": "^4.3.6",
 		"vite-plugin-native-sw": "^1.2.1"
 	}
 }
