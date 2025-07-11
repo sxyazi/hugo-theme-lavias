@@ -48,8 +48,8 @@
 <!-- /Scripts -->
 
 <!-- Analytics -->
-{{ if not .Site.IsServer }}
-	{{ with .Site.GoogleAnalytics }}
+{{ if not hugo.IsServer }}
+    {{ with .Site.Config.Services.GoogleAnalytics.ID }}
 		<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
