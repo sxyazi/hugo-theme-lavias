@@ -47,17 +47,5 @@
 <script type="module" crossorigin src="/assets/index-b1ee8dc4.js"></script>
 <!-- /Scripts -->
 
-<!-- Analytics -->
-{{ if not .Site.IsServer }}
-	{{ with .Site.GoogleAnalytics }}
-		<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', '{{ . }}');
-		</script>
-	{{ end }}
-{{ end }}
 </body>
 </html>
