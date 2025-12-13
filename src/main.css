@@ -91,3 +91,8 @@ body > main {
 		@apply w-2 h-2;
 	}
 }
+
+/* Markdown table dark mode */
+.dark .markdown-content table tr:nth-child(2n) {
+	background: transparent;
+}
