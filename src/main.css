@@ -68,6 +68,11 @@ body > main {
 	filter: brightness(0.8);
 }
 
+/* Markdown table */
+:root.dark .markdown-content table tr:nth-child(2n) {
+	background: transparent;
+}
+
 /* KaTeX */
 .katex-display .katex-html {
 	overflow: auto hidden;
